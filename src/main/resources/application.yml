@@ -1,0 +1,27 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+jwt:
+  secret_key: ${SECRET_KEY}
+  access_exp: ${ACCESS_EXP}
+  refresh_exp: ${REFRESH_EXP}
+  header: ${HEADER}
+  prefix: ${PREFIX}
+
+redis:
+  host: ${REDIS_HOST}
+  port: ${REDIS_PORT}
