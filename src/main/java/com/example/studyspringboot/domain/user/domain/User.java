@@ -1,5 +1,6 @@
 package com.example.studyspringboot.domain.user.domain;
 
+import com.example.studyspringboot.domain.user.domain.type.Authority;
 import com.example.studyspringboot.domain.user.domain.type.Sex;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -26,6 +27,7 @@ public class User {
 
     @NotNull
     @Size(max = 20)
+    @Column(unique = true)
     private String accountId;
 
     @NotNull
@@ -40,16 +42,21 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Sex sex;
 
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private Authority authority;
+
     @Size(max = 50)
     private String introduce;
 
     @Builder
-    public User(String email, String accountId, String password, String name, Sex sex, String introduce) {
+    public User(String email, String accountId, String password, String name, Sex sex, Authority authority, String introduce) {
         this.email = email;
         this.accountId = accountId;
         this.password = password;
         this.name = name;
         this.sex = sex;
+        this.authority = authority;
         this.introduce = introduce;
     }
 
