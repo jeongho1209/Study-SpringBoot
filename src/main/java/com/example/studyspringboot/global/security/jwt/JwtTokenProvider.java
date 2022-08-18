@@ -2,7 +2,7 @@ package com.example.studyspringboot.global.security.jwt;
 
 import com.example.studyspringboot.domain.auth.domain.RefreshToken;
 import com.example.studyspringboot.domain.auth.domain.repository.RefreshTokenRepository;
-import com.example.studyspringboot.domain.user.domain.type.Authority;
+import com.example.studyspringboot.global.enums.Role;
 import com.example.studyspringboot.global.exception.ExpiredJwtException;
 import com.example.studyspringboot.global.exception.InvalidJwtException;
 import com.example.studyspringboot.global.security.auth.AuthDetailsService;
@@ -26,12 +26,12 @@ public class JwtTokenProvider {
     private final AuthDetailsService authDetailsService;
     private final RefreshTokenRepository refreshTokenRepository;
 
-    public String generateAccessToken(String accountId, Authority authority) {
-        return generateToken(accountId, authority, "access", jwtProperty.getAccessExp());
+    public String generateAccessToken(String accountId, Role role) {
+        return generateToken(accountId, role, "access", jwtProperty.getAccessExp());
     }
 
-    public String generateRefreshToken(String accountId, Authority authority) {
-        String refreshToken = generateToken(accountId, authority, "refresh", jwtProperty.getRefreshExp());
+    public String generateRefreshToken(String accountId, Role role) {
+        String refreshToken = generateToken(accountId, role, "refresh", jwtProperty.getRefreshExp());
         refreshTokenRepository.save(RefreshToken.builder()
                 .accountId(accountId)
                 .token(refreshToken)
@@ -41,12 +41,12 @@ public class JwtTokenProvider {
         return refreshToken;
     }
 
-    private String generateToken(String accountId, Authority authority, String type, Long exp) {
+    private String generateToken(String accountId, Role role, String type, Long exp) {
         return Jwts.builder()
                 .signWith(SignatureAlgorithm.HS256, jwtProperty.getSecretKey())
                 .setSubject(accountId)
                 .setHeaderParam("type", type)
-                .claim("authority", authority)
+                .claim("authority", role)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + exp * 1000))
                 .compact();

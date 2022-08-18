@@ -1,6 +1,6 @@
 package com.example.studyspringboot.domain.user.domain;
 
-import com.example.studyspringboot.domain.user.domain.type.Authority;
+import com.example.studyspringboot.global.enums.Role;
 import com.example.studyspringboot.domain.user.domain.type.Sex;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -35,7 +35,7 @@ public class User {
     private String password;
 
     @NotNull
-    @Size(max = 8)
+    @Size(max = 10)
     private String name;
 
     @NotNull
@@ -44,19 +44,19 @@ public class User {
 
     @NotNull
     @Enumerated(EnumType.STRING)
-    private Authority authority;
+    private Role role;
 
     @Size(max = 50)
     private String introduce;
 
     @Builder
-    public User(String email, String accountId, String password, String name, Sex sex, Authority authority, String introduce) {
+    public User(String email, String accountId, String password, String name, Sex sex, Role role, String introduce) {
         this.email = email;
         this.accountId = accountId;
         this.password = password;
         this.name = name;
         this.sex = sex;
-        this.authority = authority;
+        this.role = role;
         this.introduce = introduce;
     }
 
