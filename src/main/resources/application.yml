@@ -25,3 +25,27 @@ jwt:
 redis:
   host: ${REDIS_HOST}
   port: ${REDIS_PORT}
+
+socket:
+  port: 8090
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${EMAIL_USERNAME}
+    password: ${EMAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          ssl:
+            trust: smtp.gmail.com
+            protocols: TLSv1.2
+
+code:
+  exp: ${CODE_EXP}
+
+mail:
+    email: ${MY_EMAIL}
