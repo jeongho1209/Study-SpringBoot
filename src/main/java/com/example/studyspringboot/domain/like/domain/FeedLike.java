@@ -12,11 +12,12 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class Like {
+@Table(name = "tbl_feed_like")
+public class FeedLike {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "feed_id", nullable = false)
@@ -27,10 +28,9 @@ public class Like {
     private User user;
 
     @Builder
-    public Like(Feed feed, User user) {
+    public FeedLike(Feed feed, User user) {
         this.feed = feed;
         this.user = user;
     }
-
 
 }
