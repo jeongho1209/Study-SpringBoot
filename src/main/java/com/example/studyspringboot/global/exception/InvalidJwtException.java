@@ -5,7 +5,7 @@ import com.example.studyspringboot.global.error.ErrorCode;
 
 public class InvalidJwtException extends CustomException {
 
-    public static final InvalidJwtException EXCEPTION =
+    public static final CustomException EXCEPTION =
             new InvalidJwtException();
 
     private InvalidJwtException() {

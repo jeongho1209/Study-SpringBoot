@@ -5,7 +5,7 @@ import com.example.studyspringboot.global.error.ErrorCode;
 
 public class EmailCodeNotVerifiedException extends CustomException {
 
-    public static final EmailCodeNotVerifiedException EXCEPTION =
+    public static final CustomException EXCEPTION =
             new EmailCodeNotVerifiedException();
 
     private EmailCodeNotVerifiedException() {

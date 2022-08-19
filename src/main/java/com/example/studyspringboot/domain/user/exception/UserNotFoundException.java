@@ -5,7 +5,7 @@ import com.example.studyspringboot.global.error.ErrorCode;
 
 public class UserNotFoundException extends CustomException {
 
-    public static final UserNotFoundException EXCEPTION =
+    public static final CustomException EXCEPTION =
             new UserNotFoundException();
 
     private UserNotFoundException() {

@@ -5,7 +5,7 @@ import com.example.studyspringboot.global.error.ErrorCode;
 
 public class ExpiredJwtException extends CustomException {
 
-    public static final ExpiredJwtException EXCEPTION =
+    public static final CustomException EXCEPTION =
             new ExpiredJwtException();
 
     private ExpiredJwtException() {

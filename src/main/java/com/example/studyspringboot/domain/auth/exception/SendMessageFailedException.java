@@ -5,7 +5,7 @@ import com.example.studyspringboot.global.error.ErrorCode;
 
 public class SendMessageFailedException extends CustomException {
 
-    public static final SendMessageFailedException EXCEPTION =
+    public static final CustomException EXCEPTION =
             new SendMessageFailedException();
 
     private SendMessageFailedException() {

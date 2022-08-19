@@ -5,7 +5,7 @@ import com.example.studyspringboot.global.error.ErrorCode;
 
 public class UserExistException extends CustomException {
 
-    public static final UserExistException EXCEPTION =
+    public static final CustomException EXCEPTION =
             new UserExistException();
 
     private UserExistException() {
