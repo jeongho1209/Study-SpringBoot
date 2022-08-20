@@ -21,4 +21,10 @@ public class FeedController {
         feedService.createFeed(request);
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{feed-id}")
+    public void deleteFeed(@PathVariable("feed-id") Long feedId) {
+        feedService.deleteFeed(feedId);
+    }
+
 }

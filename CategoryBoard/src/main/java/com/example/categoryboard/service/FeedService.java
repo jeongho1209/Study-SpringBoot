@@ -22,4 +22,12 @@ public class FeedService {
                 .build());
     }
 
+    @Transactional
+    public void deleteFeed(Long feedId){
+        Feed feed = feedRepository.findById(feedId)
+                .orElseThrow(RuntimeException::new);
+
+        feedRepository.delete(feed);
+    }
+
 }
