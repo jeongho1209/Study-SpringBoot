@@ -27,18 +27,13 @@ spring:
     properties:
       mail:
         smtp:
-          auth: true
           starttls:
             enable: true
-          ssl:
-            trust: smtp.gmail.com
-            protocols: TLSv1.2
+            required: true
+          auth: true
 
 code:
   exp: ${CODE_EXP}
-
-mail:
-  email: ${MY_EMAIL}
 
 jwt:
   secret_key: ${SECRET_KEY}

@@ -22,14 +22,16 @@ public class TokenService {
     private final JwtTokenProvider jwtTokenProvider;
 
     @Transactional
-    public TokenResponse signIn(UserSignInRequest request, Role role){
+    public TokenResponse signIn(UserSignInRequest request, Role role) {
         User user = userRepository.findByAccountId(request.getAccountId())
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
-        if(!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+        if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw PasswordMisMatchException.EXCEPTION;
         }
 
-        String accessToken = jwtTokenProvider.generateAccessToken(request.getAccountId(), role)
+        //   String accessToken = jwtTokenProvider.generateAccessToken(request.getAccountId(), role)
+        return null;
     }
+
 }
