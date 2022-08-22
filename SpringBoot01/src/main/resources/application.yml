@@ -19,22 +19,6 @@ spring:
     port: ${REDIS_PORT}
     host: ${REDIS_HOST}
 
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: ${EMAIL_USERNAME}
-    password: ${EMAIL_PASSWORD}
-    properties:
-      mail:
-        smtp:
-          starttls:
-            enable: true
-            required: true
-          auth: true
-
-code:
-  exp: ${CODE_EXP}
-
 jwt:
   secret_key: ${SECRET_KEY}
   access_exp: ${ACCESS_EXP}
