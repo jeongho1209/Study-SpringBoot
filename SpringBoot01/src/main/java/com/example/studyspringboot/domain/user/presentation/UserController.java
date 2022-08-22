@@ -4,6 +4,7 @@ import com.example.studyspringboot.domain.user.presentation.dto.request.UpdateUs
 import com.example.studyspringboot.domain.user.presentation.dto.request.UserSignUpRequest;
 import com.example.studyspringboot.domain.user.service.UpdateUserInfoService;
 import com.example.studyspringboot.domain.user.service.UserSignUpService;
+import com.example.studyspringboot.domain.user.service.UserWithdrawalService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,7 @@ public class UserController {
 
     private final UserSignUpService userSignUpService;
     private final UpdateUserInfoService updateUserInfoService;
+    private final UserWithdrawalService userWithdrawalService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
@@ -28,6 +30,12 @@ public class UserController {
     @PutMapping
     public void modifyInfo(@RequestBody @Valid UpdateUserInfoRequest request) {
         updateUserInfoService.modifyInfo(request);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping
+    public void deleteUser() {
+        userWithdrawalService.deleteUser();
     }
 
 }
