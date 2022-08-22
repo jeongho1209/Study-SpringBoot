@@ -2,6 +2,8 @@ package com.example.studyspringboot.domain.user.presentation;
 
 import com.example.studyspringboot.domain.user.presentation.dto.request.UpdateUserInfoRequest;
 import com.example.studyspringboot.domain.user.presentation.dto.request.UserSignUpRequest;
+import com.example.studyspringboot.domain.user.presentation.dto.response.QueryMyInfoResponse;
+import com.example.studyspringboot.domain.user.service.QueryMyInfoService;
 import com.example.studyspringboot.domain.user.service.UpdateUserInfoService;
 import com.example.studyspringboot.domain.user.service.UserSignUpService;
 import com.example.studyspringboot.domain.user.service.UserWithdrawalService;
@@ -17,6 +19,7 @@ import javax.validation.Valid;
 public class UserController {
 
     private final UserSignUpService userSignUpService;
+    private final QueryMyInfoService queryMyInfoService;
     private final UpdateUserInfoService updateUserInfoService;
     private final UserWithdrawalService userWithdrawalService;
 
@@ -38,4 +41,9 @@ public class UserController {
         userWithdrawalService.deleteUser();
     }
 
+    @GetMapping
+    public QueryMyInfoResponse getMyInfo() {
+        return queryMyInfoService.getMyInfo();
+    }
+    
 }
