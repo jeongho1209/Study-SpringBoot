@@ -30,8 +30,14 @@ public class TokenService {
             throw PasswordMisMatchException.EXCEPTION;
         }
 
-        //   String accessToken = jwtTokenProvider.generateAccessToken(request.getAccountId(), role)
-        return null;
+        String accessToken = jwtTokenProvider.generateAccessToken(request.getAccountId(), role);
+        String refreshToken = jwtTokenProvider.generateRefreshToken(request.getAccountId(), role);
+
+        return TokenResponse.builder()
+                .accessToken(accessToken)
+                .refreshToken(refreshToken)
+                .build();
+
     }
 
 }
