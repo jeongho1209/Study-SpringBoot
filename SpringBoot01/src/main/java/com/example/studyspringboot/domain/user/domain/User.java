@@ -1,7 +1,7 @@
 package com.example.studyspringboot.domain.user.domain;
 
-import com.example.studyspringboot.global.enums.Role;
 import com.example.studyspringboot.domain.user.domain.type.Sex;
+import com.example.studyspringboot.global.enums.Role;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -60,8 +60,9 @@ public class User {
         this.introduce = introduce;
     }
 
-    public void modifyInfo(String introduce) {
+    public void modifyInfo(String introduce, String name) {
         this.introduce = introduce;
+        this.name = name;
     }
 
 }
