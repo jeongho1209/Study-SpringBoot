@@ -16,8 +16,8 @@ public class UserSignUpRequest {
     private String accountId;
 
     @NotBlank
-    @Pattern(regexp = "(?=.*[a-z])(?=.*[0-9])(?=.*[!#$%&'()*+,./:;<=>?@＼^_`{|}~])[a-zA-Z0-9!#$%&'()*+,./:;<=>?@＼^_`{|}~]{8,60}$",
-            message = "password는 Null, 공백, 띄어쓰기를 허용하지 않고, 영문, 숫자, 특수기호가 포함되어야 하며 8글자 이상 60글자 이하여야 합니다.")
+    @Pattern(regexp = "(?=.*[a-z])(?=.*[0-9])(?=.*[!#$%&'()*+,./:;<=>?@＼^_`{|}~])[a-zA-Z0-9!#$%&'()*+,./:;<=>?@＼^_`{|}~]{8,20}$",
+            message = "password는 Null, 공백, 띄어쓰기를 허용하지 않고, 영문, 숫자, 특수기호가 포함되어야 하며 8글자 이상 20글자 이하여야 합니다.")
     private String password;
 
     @Email(message = "올바른 email형식을 지켜주세요")
