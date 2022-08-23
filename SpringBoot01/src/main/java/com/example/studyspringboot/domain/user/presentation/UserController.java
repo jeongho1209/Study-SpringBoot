@@ -1,12 +1,10 @@
 package com.example.studyspringboot.domain.user.presentation;
 
+import com.example.studyspringboot.domain.user.presentation.dto.request.ChangePasswordRequest;
 import com.example.studyspringboot.domain.user.presentation.dto.request.UpdateUserInfoRequest;
 import com.example.studyspringboot.domain.user.presentation.dto.request.UserSignUpRequest;
 import com.example.studyspringboot.domain.user.presentation.dto.response.QueryMyInfoResponse;
-import com.example.studyspringboot.domain.user.service.QueryMyInfoService;
-import com.example.studyspringboot.domain.user.service.UpdateUserInfoService;
-import com.example.studyspringboot.domain.user.service.UserSignUpService;
-import com.example.studyspringboot.domain.user.service.UserWithdrawalService;
+import com.example.studyspringboot.domain.user.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +19,7 @@ public class UserController {
     private final UserSignUpService userSignUpService;
     private final QueryMyInfoService queryMyInfoService;
     private final UpdateUserInfoService updateUserInfoService;
+    private final ChangePasswordService changePasswordService;
     private final UserWithdrawalService userWithdrawalService;
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -30,9 +29,15 @@ public class UserController {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PutMapping
+    @PatchMapping
     public void modifyInfo(@RequestBody @Valid UpdateUserInfoRequest request) {
         updateUserInfoService.modifyInfo(request);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PatchMapping("/password")
+    public void changePassword(@RequestBody @Valid ChangePasswordRequest request) {
+        changePasswordService.changePassword(request);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -45,5 +50,5 @@ public class UserController {
     public QueryMyInfoResponse getMyInfo() {
         return queryMyInfoService.getMyInfo();
     }
-    
+
 }
