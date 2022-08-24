@@ -16,6 +16,7 @@ public enum ErrorCode {
 
     USER_NOT_FOUND(404, "User Not Found"),
     EMAIL_CODE_NOT_FOUND(404, "Email Code Not Found"),
+    FEED_NOT_FOUND(404, "Feed Not Found"),
 
     USER_EXIST(409, "User Exist"),
 
