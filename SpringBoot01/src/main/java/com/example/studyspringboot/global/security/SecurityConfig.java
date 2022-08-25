@@ -43,6 +43,8 @@ public class SecurityConfig {
 
                 // feed
                 .antMatchers(HttpMethod.GET, "/feed/list").permitAll()
+                .antMatchers(HttpMethod.GET, "/feed/{feed-id}").permitAll()
+                .antMatchers(HttpMethod.GET, "/feed/search/{title}").permitAll()
 
                 .anyRequest().authenticated()
 
