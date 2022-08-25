@@ -1,4 +1,4 @@
-package com.email.sender.global.exception;
+package com.email.sender.domain.user.exception;
 
 import com.email.sender.global.error.CustomException;
 import com.email.sender.global.error.ErrorCode;

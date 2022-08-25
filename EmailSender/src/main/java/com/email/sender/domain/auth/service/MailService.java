@@ -1,7 +1,6 @@
 package com.email.sender.domain.auth.service;
 
 import com.email.sender.domain.auth.domain.Certification;
-import com.email.sender.global.exception.SendMessageFailedException;
 import com.email.sender.domain.auth.domain.repository.CertificationRepository;
 import com.email.sender.domain.auth.domain.type.Certified;
 import lombok.RequiredArgsConstructor;
