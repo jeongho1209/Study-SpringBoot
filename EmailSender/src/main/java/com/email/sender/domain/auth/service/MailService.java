@@ -3,6 +3,7 @@ package com.email.sender.domain.auth.service;
 import com.email.sender.domain.auth.domain.Certification;
 import com.email.sender.domain.auth.domain.repository.CertificationRepository;
 import com.email.sender.domain.auth.domain.type.Certified;
+import com.email.sender.domain.auth.exception.SendMessageFailedException;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Value;
