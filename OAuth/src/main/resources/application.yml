@@ -1,0 +1,31 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: mysql
+    generate-ddl: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  security:
+    oauth2.client:
+      registration:
+        google:
+          clientId: ${CLIENT_ID}
+          clientSecret: ${CLIENT_SECRET}
+          scope:
+            - email
+            - profile
+
+  redis:
+    port: ${REDIS_PORT}
+    host: ${REDIS_HOST}
+
+  jackson:
+    property-naming-strategy: SNAKE_CASE
