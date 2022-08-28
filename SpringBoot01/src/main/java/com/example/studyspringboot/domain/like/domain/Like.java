@@ -13,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name = "tbl_feed_like")
-public class FeedLike {
+public class Like {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +28,7 @@ public class FeedLike {
     private User user;
 
     @Builder
-    public FeedLike(Feed feed, User user) {
+    public Like(Feed feed, User user) {
         this.feed = feed;
         this.user = user;
     }
