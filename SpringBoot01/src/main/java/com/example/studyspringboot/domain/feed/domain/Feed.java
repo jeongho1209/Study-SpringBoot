@@ -34,7 +34,7 @@ public class Feed extends BaseTimeEntity {
     @NotNull
     private LocalDateTime updatedAt;
 
-    @Column(nullable = false)
+    @NotNull
     private Integer views;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -55,7 +55,7 @@ public class Feed extends BaseTimeEntity {
         this.content = content;
     }
 
-    public void addViews(Integer views) {
+    public void addViews() {
         this.views += 1;
     }
 
