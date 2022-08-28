@@ -13,4 +13,6 @@ public interface FeedRepository extends CrudRepository<Feed, Long> {
     @Query("select f from Feed f join fetch f.user order by f.createdAt DESC ")
     List<Feed> findAllByJoinFetch();
 
+    List<Feed> findAllByTitleContaining(String title);
+
 }
