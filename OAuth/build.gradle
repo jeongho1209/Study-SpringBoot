@@ -20,9 +20,11 @@ repositories {
 
 dependencies {
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
-    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
-    implementation('org.springframework.security.oauth:spring-security-oauth2')
-    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+
+    implementation 'org.springframework.security.oauth:spring-security-oauth2'
+    implementation group: 'org.springframework.security.oauth.boot', name: 'spring-security-oauth2-autoconfigure', version: '2.6.8'
+    implementation group: 'org.springframework.security', name: 'spring-security-oauth2-client', version: '5.7.3'
+
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
