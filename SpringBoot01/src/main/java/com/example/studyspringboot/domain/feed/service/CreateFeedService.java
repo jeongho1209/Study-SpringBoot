@@ -24,6 +24,7 @@ public class CreateFeedService {
                 .title(request.getTitle())
                 .content(request.getContent())
                 .views(0)
+                .likeCounts(0)
                 .user(user)
                 .build());
     }
