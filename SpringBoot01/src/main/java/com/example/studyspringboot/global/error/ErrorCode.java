@@ -9,6 +9,7 @@ public enum ErrorCode {
 
     EXPIRED_JWT(401, "Expired Jwt"),
     INVALID_JWT(401, "Invalid Jwt"),
+    INVALID_REFRESH_TOKEN(401, "Invalid Refresh Token"),
     PASSWORD_MIS_MATCH(401, "Password Mis Match"),
     EMAIL_CODE_NOT_VERIFIED(401, "Email Code Not Verified"),
     CODE_NOT_CORRECT(401, "Code Not Correct"),
@@ -17,6 +18,7 @@ public enum ErrorCode {
     USER_NOT_FOUND(404, "User Not Found"),
     EMAIL_CODE_NOT_FOUND(404, "Email Code Not Found"),
     FEED_NOT_FOUND(404, "Feed Not Found"),
+    REFRESH_TOKEN_NOT_FOUND(404, "Refresh Token Not Found"),
 
     USER_EXIST(409, "User Exist"),
     LIKE_EXIST(409, "Like Exist"),

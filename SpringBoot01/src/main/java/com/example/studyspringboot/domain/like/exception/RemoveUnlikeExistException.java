@@ -11,5 +11,5 @@ public class RemoveUnlikeExistException extends CustomException {
     private RemoveUnlikeExistException() {
         super(ErrorCode.REMOVE_UNLIKE_EXIST);
     }
-    
+
 }
