@@ -37,16 +37,20 @@ public class Feed extends BaseTimeEntity {
     @NotNull
     private Integer views;
 
+    @NotNull
+    private Integer likeCounts;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @Builder
-    public Feed(String title, String content, LocalDateTime updatedAt, Integer views, User user) {
+    public Feed(String title, String content, LocalDateTime updatedAt, Integer views, Integer likeCounts, User user) {
         this.title = title;
         this.content = content;
         this.updatedAt = updatedAt;
         this.views = views;
+        this.likeCounts = likeCounts;
         this.user = user;
     }
 
@@ -57,6 +61,14 @@ public class Feed extends BaseTimeEntity {
 
     public void addViews() {
         this.views += 1;
+    }
+
+    public void addLikeCount() {
+        this.likeCounts += 1;
+    }
+
+    public void minusLikeCount() {
+        this.likeCounts -= 1;
     }
 
 }
