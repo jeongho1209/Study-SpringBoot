@@ -21,6 +21,8 @@ public enum ErrorCode {
     USER_EXIST(409, "User Exist"),
     LIKE_EXIST(409, "Like Exist"),
     REMOVE_LIKE_EXIST(409, "Remove Like Exist"),
+    UNLIKE_EXIST(409, "Unlike Exist"),
+    REMOVE_UNLIKE_EXIST(409, "Remove Unlike Exist"),
 
     SEND_MESSAGE_FAILED(500, "Send Message Failed"),
     INTERNAL_SERVER_ERROR(500, "Internal Server Error");
