@@ -3,13 +3,13 @@ package com.example.socket.global.exception;
 import com.example.socket.global.error.CustomException;
 import com.example.socket.global.error.ErrorCode;
 
-public class UserNotFoundException extends CustomException {
+public class InvalidJwtException extends CustomException {
 
     public static final CustomException EXCEPTION =
-            new UserNotFoundException();
+            new InvalidJwtException();
 
-    private UserNotFoundException() {
-        super(ErrorCode.USER_NOT_FOUND);
+    private InvalidJwtException() {
+        super(ErrorCode.INVALID_JWT);
     }
 
 }
