@@ -1,6 +1,6 @@
 package com.example.socket.domain.user.service;
 
-import com.example.socket.domain.auth.presentation.dto.response.TokenResponse;
+import com.example.socket.domain.user.presentation.dto.response.TokenResponse;
 import com.example.socket.domain.user.domain.User;
 import com.example.socket.domain.user.domain.repository.UserRepository;
 import com.example.socket.domain.user.exception.UserExistsException;

@@ -1,6 +1,6 @@
 package com.example.socket.domain.user.presentation;
 
-import com.example.socket.domain.auth.presentation.dto.response.TokenResponse;
+import com.example.socket.domain.user.presentation.dto.response.TokenResponse;
 import com.example.socket.domain.user.presentation.dto.request.SignUpRequest;
 import com.example.socket.domain.user.service.SignUpService;
 import lombok.RequiredArgsConstructor;

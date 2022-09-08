@@ -1,4 +1,4 @@
-package com.example.socket.domain.auth.domain;
+package com.example.socket.domain.refresh_token.domain;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;

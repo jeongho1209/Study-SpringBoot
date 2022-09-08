@@ -1,4 +1,4 @@
-package com.example.socket.domain.auth.presentation.dto.response;
+package com.example.socket.domain.user.presentation.dto.response;
 
 import lombok.Builder;
 import lombok.Getter;
