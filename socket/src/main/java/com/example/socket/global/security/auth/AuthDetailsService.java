@@ -1,7 +1,7 @@
 package com.example.socket.global.security.auth;
 
 import com.example.socket.domain.user.domain.repository.UserRepository;
-import com.example.socket.global.exception.UserNotFoundException;
+import com.example.socket.domain.user.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
