@@ -1,7 +1,7 @@
 package com.example.socket.global.security.jwt;
 
-import com.example.socket.domain.refresh_token.domain.RefreshToken;
-import com.example.socket.domain.refresh_token.domain.repository.RefreshTokenRepository;
+import com.example.socket.domain.refresh_token.RefreshToken;
+import com.example.socket.domain.refresh_token.RefreshTokenRepository;
 import com.example.socket.global.exception.ExpiredJwtException;
 import com.example.socket.global.exception.InvalidJwtException;
 import com.example.socket.global.security.auth.AuthDetailsService;
