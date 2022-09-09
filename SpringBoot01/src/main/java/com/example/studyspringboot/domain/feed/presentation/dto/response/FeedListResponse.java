@@ -21,6 +21,8 @@ public class FeedListResponse {
         private final String title;
         private final LocalDateTime createdAt;
         private final LocalDateTime updatedAt;
+        private final Integer likeCounts;
+        private final Integer unLikeCounts;
         private final String name;
     }
 

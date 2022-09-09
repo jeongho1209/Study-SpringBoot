@@ -9,10 +9,12 @@ import java.time.LocalDateTime;
 @Builder
 public class FeedDetailResponse {
 
-    private Long feedId;
-    private String title;
-    private String content;
-    private Integer views;
+    private final Long feedId;
+    private final String title;
+    private final String content;
+    private final Integer views;
+    private final Integer likeCounts;
+    private final Integer unLikeCounts;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private String name;
