@@ -9,6 +9,7 @@ public enum ErrorCode {
 
     EXPIRED_JWT(401, "Expired Jwt"),
     INVALID_JWT(401, "Invalid Jwt"),
+    PASSWORD_MIS_MATCH(401, "Password Mis Match"),
 
     USER_NOT_FOUND(404, "User Not Found"),
 
