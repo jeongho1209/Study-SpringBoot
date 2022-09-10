@@ -34,6 +34,8 @@ public class QueryFeedService {
                 .views(feed.getViews())
                 .createdAt(feed.getCreatedAt())
                 .updatedAt(feed.getUpdatedAt())
+                .likeCounts(feed.getLikeCounts())
+                .unLikeCounts(feed.getUnLikeCounts())
                 .name(feed.getUser().getName())
                 .build();
     }

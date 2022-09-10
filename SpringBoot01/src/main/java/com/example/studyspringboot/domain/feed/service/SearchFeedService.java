@@ -4,7 +4,6 @@ import com.example.studyspringboot.domain.feed.domain.Feed;
 import com.example.studyspringboot.domain.feed.domain.repository.FeedRepository;
 import com.example.studyspringboot.domain.feed.presentation.dto.response.FeedListResponse;
 import com.example.studyspringboot.domain.feed.presentation.dto.response.FeedListResponse.FeedResponse;
-import com.example.studyspringboot.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,6 +35,8 @@ public class SearchFeedService {
                 .views(feed.getViews())
                 .createdAt(feed.getCreatedAt())
                 .updatedAt(feed.getUpdatedAt())
+                .likeCounts(feed.getLikeCounts())
+                .unLikeCounts(feed.getUnLikeCounts())
                 .name(feed.getUser().getName())
                 .build();
     }
