@@ -6,12 +6,10 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -30,10 +28,6 @@ public class Feed extends BaseTimeEntity {
     @Size(max = 500)
     private String content;
 
-    @LastModifiedDate
-    @NotNull
-    private LocalDateTime updatedAt;
-
     @NotNull
     private Integer views;
 
@@ -48,10 +42,9 @@ public class Feed extends BaseTimeEntity {
     private User user;
 
     @Builder
-    public Feed(String title, String content, LocalDateTime updatedAt, Integer views, Integer likeCounts, Integer unLikeCounts, User user) {
+    public Feed(String title, String content, Integer views, Integer likeCounts, Integer unLikeCounts, User user) {
         this.title = title;
         this.content = content;
-        this.updatedAt = updatedAt;
         this.views = views;
         this.likeCounts = likeCounts;
         this.unLikeCounts = unLikeCounts;
