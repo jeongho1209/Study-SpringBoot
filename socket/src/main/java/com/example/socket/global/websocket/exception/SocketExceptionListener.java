@@ -42,11 +42,10 @@ public class SocketExceptionListener implements ExceptionListener {
         final ErrorCode errorCode;
 
         if (e.getCause() instanceof CustomException) {
-            errorCode = (((CustomException) e.getCause()).getErrorCode());
+            errorCode = ((CustomException) e.getCause()).getErrorCode();
         } else {
             errorCode = ErrorCode.INTERNAL_SERVER_ERROR;
         }
-
         ErrorResponse message = ErrorResponse.builder()
                 .status(errorCode.getStatus())
                 .message(errorCode.getMessage())

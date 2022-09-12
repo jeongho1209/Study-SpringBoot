@@ -16,14 +16,17 @@ public class WebSocketConfig {
 
     @Bean
     public SocketIOServer socketIOServer() {
-        com.corundumstudio.socketio.Configuration config = new com.corundumstudio.socketio.Configuration();
+
         SocketConfig socketConfig = new SocketConfig();
         socketConfig.setReuseAddress(true);
-        config.setPort(port);
-        config.setOrigin("*");
-        config.setSocketConfig(socketConfig);
-        config.setExceptionListener(new SocketExceptionListener());
-        return new SocketIOServer(config);
+
+        com.corundumstudio.socketio.Configuration configuration = new com.corundumstudio.socketio.Configuration();
+        configuration.setPort(port);
+        configuration.setOrigin("*");
+        configuration.setSocketConfig(socketConfig);
+        configuration.setExceptionListener(new SocketExceptionListener());
+
+        return new SocketIOServer(configuration);
     }
 
     @Bean
