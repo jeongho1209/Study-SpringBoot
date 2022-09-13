@@ -31,6 +31,7 @@ public class UserSignUpService {
                 .email(request.getEmail())
                 .name(request.getName())
                 .sex(request.getSex())
+                .followCounts(0)
                 .role(Role.USER)
                 .build();
         userRepository.save(user);

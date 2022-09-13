@@ -8,7 +8,10 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -43,17 +46,21 @@ public class User extends BaseIdEntity {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @NotNull
+    private Integer followCounts;
+
     @Size(max = 50)
     private String introduce;
 
     @Builder
-    public User(String email, String accountId, String password, String name, Sex sex, Role role, String introduce) {
+    public User(String email, String accountId, String password, String name, Sex sex, Role role, Integer followCounts, String introduce) {
         this.email = email;
         this.accountId = accountId;
         this.password = password;
         this.name = name;
         this.sex = sex;
         this.role = role;
+        this.followCounts = followCounts;
         this.introduce = introduce;
     }
 
@@ -64,6 +71,10 @@ public class User extends BaseIdEntity {
 
     public void changePassword(String password) {
         this.password = password;
+    }
+
+    public void addFollower() {
+        this.followCounts += 1;
     }
 
 }
