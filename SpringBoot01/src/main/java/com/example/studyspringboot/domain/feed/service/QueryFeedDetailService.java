@@ -15,7 +15,7 @@ public class QueryFeedDetailService {
     private final FeedRepository feedRepository;
 
     @Transactional
-    public FeedDetailResponse getFeedDetail(Long feedId) {
+    public FeedDetailResponse getFeedDetail(Integer feedId) {
 
         Feed feed = feedRepository.findById(feedId)
                 .orElseThrow(() -> FeedNotFoundException.EXCEPTION);

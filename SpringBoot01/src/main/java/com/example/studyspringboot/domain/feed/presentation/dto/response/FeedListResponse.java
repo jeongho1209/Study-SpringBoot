@@ -16,7 +16,7 @@ public class FeedListResponse {
     @Getter
     @Builder
     public static class FeedResponse {
-        private final Long feedId;
+        private final Integer feedId;
         private final Integer views;
         private final String title;
         private final LocalDateTime createdAt;

@@ -24,7 +24,7 @@ public class LikeService {
     private final LikeFacade likeFacade;
 
     @Transactional
-    public LikeResponse liked(Long feedId) {
+    public LikeResponse liked(Integer feedId) {
         User user = userFacade.getCurrentUser();
         Feed feed = feedFacade.getFeed(feedId);
 
@@ -37,7 +37,7 @@ public class LikeService {
     }
 
     @Transactional
-    public LikeResponse deleteLiked(Long feedId) {
+    public LikeResponse deleteLiked(Integer feedId) {
         User user = userFacade.getCurrentUser();
         Feed feed = feedFacade.getFeed(feedId);
 

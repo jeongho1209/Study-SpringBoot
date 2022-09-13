@@ -29,7 +29,7 @@ public class FeedController {
     }
 
     @GetMapping("/{feed-id}")
-    public FeedDetailResponse getFeedDetail(@PathVariable("feed-id") Long feedId) {
+    public FeedDetailResponse getFeedDetail(@PathVariable("feed-id") Integer feedId) {
         return queryFeedDetailService.getFeedDetail(feedId);
     }
 

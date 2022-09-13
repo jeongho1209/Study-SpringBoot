@@ -12,7 +12,7 @@ public class FeedFacade {
 
     private final FeedRepository feedRepository;
 
-    public Feed getFeed(Long feedId) {
+    public Feed getFeed(Integer feedId) {
         return feedRepository.findById(feedId)
                 .orElseThrow(() -> FeedNotFoundException.EXCEPTION);
     }

@@ -1,6 +1,7 @@
 package com.example.studyspringboot.domain.user.domain;
 
 import com.example.studyspringboot.domain.user.domain.type.Sex;
+import com.example.studyspringboot.global.entity.BaseIdEntity;
 import com.example.studyspringboot.global.enums.Role;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -14,11 +15,7 @@ import javax.validation.constraints.Size;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class User extends BaseIdEntity {
 
     @NotNull
     @Size(max = 64)
