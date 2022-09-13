@@ -12,6 +12,7 @@ public enum ErrorCode {
     INVALID_REFRESH_TOKEN(401, "Invalid Refresh Token"),
     PASSWORD_MIS_MATCH(401, "Password Mis Match"),
     EMAIL_CODE_NOT_VERIFIED(401, "Email Code Not Verified"),
+    CANNOT_FOLLOW_YOURSELF(401, "Cannot Follow Yourself"),
     CODE_NOT_CORRECT(401, "Code Not Correct"),
     CODE_ALREADY_EXPIRED(401, "Code Already Expired"),
 
@@ -25,6 +26,7 @@ public enum ErrorCode {
     REMOVE_LIKE_EXIST(409, "Remove Like Exist"),
     UNLIKE_EXIST(409, "Unlike Exist"),
     REMOVE_UNLIKE_EXIST(409, "Remove Unlike Exist"),
+    FOLLOW_EXIST(409, "Follow Exist"),
 
     SEND_MESSAGE_FAILED(500, "Send Message Failed"),
     INTERNAL_SERVER_ERROR(500, "Internal Server Error");
