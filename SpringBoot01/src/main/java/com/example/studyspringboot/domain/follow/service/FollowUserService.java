@@ -39,7 +39,7 @@ public class FollowUserService {
             throw FollowExistException.EXCEPTION;
         }
 
-        currentUser.addFollower();
+        targetUser.addFollower();
         return addFollow(currentUser, targetUser);
     }
 
