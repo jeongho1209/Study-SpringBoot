@@ -24,6 +24,6 @@ public class LogoutService {
                 .orElseThrow(() -> RefreshTokenNotFoundException.EXCEPTION);
 
         refreshTokenRepository.delete(refreshToken);
-    }
+    }   
 
 }
