@@ -12,6 +12,8 @@ public enum ErrorCode {
     PASSWORD_MIS_MATCH(401, "Password Mis Match"),
 
     USER_NOT_FOUND(404, "User Not Found"),
+    ROOM_NOT_FOUND(404, "Room Not Found"),
+    MEMBER_NOT_FOUND(404, "Member Not Found"),
 
     USER_EXISTS(409, "User Exists"),
 
