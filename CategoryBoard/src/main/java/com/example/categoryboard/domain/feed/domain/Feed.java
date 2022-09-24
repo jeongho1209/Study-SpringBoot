@@ -1,6 +1,6 @@
-package com.example.categoryboard.entity;
+package com.example.categoryboard.domain.feed.domain;
 
-import com.example.categoryboard.type.Category;
+import com.example.categoryboard.domain.feed.domain.type.Category;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,7 +15,7 @@ public class Feed {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     @Column(length = 20, nullable = false)
     private String title;

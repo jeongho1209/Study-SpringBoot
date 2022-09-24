@@ -1,10 +1,10 @@
-package com.example.categoryboard.presentation;
+package com.example.categoryboard.domain.feed.presentation;
 
-import com.example.categoryboard.presentation.dto.request.CreateFeedRequest;
-import com.example.categoryboard.presentation.dto.request.UpdateFeedRequest;
-import com.example.categoryboard.service.CreateFeedService;
-import com.example.categoryboard.service.DeleteFeedService;
-import com.example.categoryboard.service.UpdateFeedService;
+import com.example.categoryboard.domain.feed.presentation.dto.request.CreateFeedRequest;
+import com.example.categoryboard.domain.feed.presentation.dto.request.UpdateFeedRequest;
+import com.example.categoryboard.domain.feed.service.CreateFeedService;
+import com.example.categoryboard.domain.feed.service.DeleteFeedService;
+import com.example.categoryboard.domain.feed.service.UpdateFeedService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -28,13 +28,13 @@ public class FeedController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{feed-id}")
-    public void deleteFeed(@PathVariable("feed-id") Long feedId) {
+    public void deleteFeed(@PathVariable("feed-id") Integer feedId) {
         deleteFeedService.deleteFeed(feedId);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PutMapping("/{feed-id}")
-    public void modifyFeed(@PathVariable("feed-id") Long feedId,
+    public void modifyFeed(@PathVariable("feed-id") Integer feedId,
                            UpdateFeedRequest request) {
         updateFeedService.modifyFeed(feedId, request);
     }

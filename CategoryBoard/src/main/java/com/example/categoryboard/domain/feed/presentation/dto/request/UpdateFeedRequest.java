@@ -1,4 +1,4 @@
-package com.example.categoryboard.presentation.dto.request;
+package com.example.categoryboard.domain.feed.presentation.dto.request;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

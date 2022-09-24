@@ -1,7 +1,7 @@
-package com.example.categoryboard.service;
+package com.example.categoryboard.domain.feed.service;
 
-import com.example.categoryboard.entity.Feed;
-import com.example.categoryboard.repository.FeedRepository;
+import com.example.categoryboard.domain.feed.domain.Feed;
+import com.example.categoryboard.domain.feed.domain.repository.FeedRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,7 +13,7 @@ public class DeleteFeedService {
     private final FeedRepository feedRepository;
 
     @Transactional
-    public void deleteFeed(Long feedId) {
+    public void deleteFeed(Integer feedId) {
         Feed feed = feedRepository.findById(feedId)
                 .orElseThrow(RuntimeException::new);
 
