@@ -10,4 +10,6 @@ public class SocketProperty {
 
     public static final String MESSAGE_KEY = "message";
 
+    public static final String ROOM = "room";
+
 }
