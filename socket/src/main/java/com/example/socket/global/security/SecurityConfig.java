@@ -30,6 +30,7 @@ public class SecurityConfig {
                 .authorizeRequests()
 
                 // user
+                .antMatchers(HttpMethod.POST, "/user/signup").permitAll()
                 .antMatchers(HttpMethod.POST, "/user/login").permitAll()
 
                 // socket.io
