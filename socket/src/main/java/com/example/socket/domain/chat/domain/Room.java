@@ -1,6 +1,7 @@
 package com.example.socket.domain.chat.domain;
 
 import com.example.socket.domain.chat.domain.enums.RoomType;
+import com.example.socket.domain.user.domain.User;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -33,6 +34,10 @@ public class Room {
     public Room(RoomType roomType, String name) {
         this.roomType = roomType;
         this.name = name;
+    }
+
+    public void addMember(Member member) {
+        this.members.add(member);
     }
 
 }
