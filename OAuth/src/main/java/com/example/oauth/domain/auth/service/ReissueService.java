@@ -29,10 +29,10 @@ public class ReissueService {
         RefreshToken redisRefreshToken = refreshTokenRepository.findByToken(jwtTokenProvider.parseToken(refreshToken))
                 .orElseThrow(() -> RefreshTokenNotFoundException.EXCEPTION);
 
-        String newRefreshToken = jwtTokenProvider.generateRefreshToken(redisRefreshToken.getAccountId());
+        String newRefreshToken = jwtTokenProvider.generateRefreshToken(redisRefreshToken.getEmail());
         redisRefreshToken.updateToken(newRefreshToken, jwtProperty.getRefreshExp());
 
-        String newAccessToken = jwtTokenProvider.generateAccessToken(redisRefreshToken.getAccountId());
+        String newAccessToken = jwtTokenProvider.generateAccessToken(redisRefreshToken.getEmail());
 
         return TokenResponse.builder()
                 .accessToken(newAccessToken)
