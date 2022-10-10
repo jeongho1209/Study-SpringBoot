@@ -10,7 +10,7 @@ import javax.validation.constraints.Pattern;
 @NoArgsConstructor
 public class ChangePasswordRequest {
 
-    @NotBlank(message = "password는 공백, Null이 불가합니다.")
+    @NotBlank
     private String oldPassword;
 
     @NotBlank

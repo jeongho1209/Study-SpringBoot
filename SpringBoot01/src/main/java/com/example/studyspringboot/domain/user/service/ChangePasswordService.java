@@ -16,7 +16,6 @@ public class ChangePasswordService {
 
     private final UserFacade userFacade;
     private final PasswordEncoder passwordEncoder;
-    private final UserRepository userRepository;
 
     @Transactional
     public void changePassword(ChangePasswordRequest request) {
