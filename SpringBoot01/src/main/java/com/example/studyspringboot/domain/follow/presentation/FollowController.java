@@ -17,7 +17,7 @@ public class FollowController {
     private final FollowUserService followUserService;
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping// todo 팔로우 수 추가하기
+    @PostMapping
     public FollowResponse addFollow(@RequestBody @Valid FollowRequest request) {
         return followUserService.execute(request);
     }
