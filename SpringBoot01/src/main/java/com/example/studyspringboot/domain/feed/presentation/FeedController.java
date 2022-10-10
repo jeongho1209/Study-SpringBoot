@@ -1,12 +1,10 @@
 package com.example.studyspringboot.domain.feed.presentation;
 
 import com.example.studyspringboot.domain.feed.presentation.dto.request.CreateFeedRequest;
+import com.example.studyspringboot.domain.feed.presentation.dto.request.UpdateFeedRequest;
 import com.example.studyspringboot.domain.feed.presentation.dto.response.FeedDetailResponse;
 import com.example.studyspringboot.domain.feed.presentation.dto.response.FeedListResponse;
-import com.example.studyspringboot.domain.feed.service.CreateFeedService;
-import com.example.studyspringboot.domain.feed.service.QueryFeedDetailService;
-import com.example.studyspringboot.domain.feed.service.QueryFeedService;
-import com.example.studyspringboot.domain.feed.service.SearchFeedService;
+import com.example.studyspringboot.domain.feed.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +20,7 @@ public class FeedController {
     private final QueryFeedService queryFeedService;
     private final SearchFeedService searchFeedService;
     private final QueryFeedDetailService queryFeedDetailService;
+    private final UpdateFeedService updateFeedService;
 
     @GetMapping("/list")
     public FeedListResponse getFeedList() {
@@ -42,6 +41,13 @@ public class FeedController {
     @PostMapping
     public void createFeed(@RequestBody @Valid CreateFeedRequest request) {
         createFeedService.createFeed(request);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PutMapping("{/feed-id}")
+    public void modifyFeed(@PathVariable("feed-id") Integer feedId,
+                           @RequestBody @Valid UpdateFeedRequest request) {
+        updateFeedService.execute(feedId, request);
     }
 
 }
