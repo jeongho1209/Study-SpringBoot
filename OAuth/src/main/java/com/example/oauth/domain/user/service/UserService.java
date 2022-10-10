@@ -3,6 +3,8 @@ package com.example.oauth.domain.user.service;
 import com.example.oauth.domain.auth.presentation.dto.response.TokenResponse;
 import com.example.oauth.domain.user.domain.User;
 import com.example.oauth.domain.user.domain.repository.UserRepository;
+import com.example.oauth.domain.user.domain.type.ProviderType;
+import com.example.oauth.domain.user.domain.type.Role;
 import com.example.oauth.domain.user.exception.UserNotFoundException;
 import com.example.oauth.domain.user.presentation.dto.request.UserSignInRequest;
 import com.example.oauth.domain.user.presentation.dto.request.UserSignUpRequest;
@@ -23,6 +25,8 @@ public class UserService {
         userRepository.save(User.builder()
                 .email(request.getEmail())
                 .name(request.getName())
+                .role(Role.USER)
+                .providerType(ProviderType.LOCAL)
                 .build());
     }
 
