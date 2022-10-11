@@ -16,6 +16,7 @@ public enum ErrorCode {
     CODE_NOT_CORRECT(401, "Code Not Correct"),
     CODE_ALREADY_EXPIRED(401, "Code Already Expired"),
     CANNOT_MODIFY_FEED(401, "Cannot Modify Feed"),
+    CANNOT_DELETE_FEED(401, "Cannot Delete Feed"),
 
     USER_NOT_FOUND(404, "User Not Found"),
     EMAIL_CODE_NOT_FOUND(404, "Email Code Not Found"),
