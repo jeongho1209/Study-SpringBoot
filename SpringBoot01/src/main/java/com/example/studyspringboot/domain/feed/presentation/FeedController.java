@@ -21,6 +21,7 @@ public class FeedController {
     private final SearchFeedService searchFeedService;
     private final QueryFeedDetailService queryFeedDetailService;
     private final UpdateFeedService updateFeedService;
+    private final DeleteFeedService deleteFeedService;
 
     @GetMapping("/list")
     public FeedListResponse getFeedList() {
@@ -48,6 +49,12 @@ public class FeedController {
     public void modifyFeed(@PathVariable("feed-id") Integer feedId,
                            @RequestBody @Valid UpdateFeedRequest request) {
         updateFeedService.execute(feedId, request);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{feed-id}")
+    public void deleteFeed(@PathVariable("feed-id") Integer feedId) {
+        deleteFeedService.execute(feedId);
     }
 
 }
