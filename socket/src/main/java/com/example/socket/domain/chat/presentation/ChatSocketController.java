@@ -24,7 +24,7 @@ public class ChatSocketController {
     private final JoinRoomService joinRoomService;
 
     @OnEvent("chat")
-    public void sendChat(SocketIOClient client, SocketIOServer server, @RequestBody @Valid SendChatRequest request) {
+    public void sendChat(SocketIOClient client, SocketIOServer server, @RequestBody SendChatRequest request) {
         sendChatService.execute(client, server, request);
     }
 
