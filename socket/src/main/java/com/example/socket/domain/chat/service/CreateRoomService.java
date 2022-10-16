@@ -29,6 +29,7 @@ public class CreateRoomService {
         User user = userFacade.findUserByAccountId(client.get(ClientProperty.USER_KEY));
 
         Room room = roomRepository.save(Room.builder()
+                .roomType(request.getRoomType())
                 .name(request.getRoomName())
                 .build());
 
