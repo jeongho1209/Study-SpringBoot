@@ -46,6 +46,7 @@ public class SocketExceptionListener implements ExceptionListener {
         } else {
             errorCode = ErrorCode.INTERNAL_SERVER_ERROR;
         }
+
         ErrorResponse message = ErrorResponse.builder()
                 .status(errorCode.getStatus())
                 .message(errorCode.getMessage())
