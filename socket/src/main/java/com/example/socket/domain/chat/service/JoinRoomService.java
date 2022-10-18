@@ -4,6 +4,8 @@ import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.SocketIOServer;
 import com.example.socket.domain.chat.domain.Member;
 import com.example.socket.domain.chat.domain.Room;
+import com.example.socket.domain.chat.exception.AlreadyJoinException;
+import com.example.socket.domain.chat.facade.MemberFacade;
 import com.example.socket.domain.chat.facade.RoomFacade;
 import com.example.socket.domain.chat.presentation.dto.request.JoinRoomRequest;
 import com.example.socket.domain.user.domain.User;
@@ -20,12 +22,17 @@ public class JoinRoomService {
 
     private final RoomFacade roomFacade;
     private final UserFacade userFacade;
+    private final MemberFacade memberFacade;
     private final SocketIOServer server;
 
     @Transactional
     public void execute(SocketIOClient client, JoinRoomRequest request) {
-        User user = userFacade.findUserByAccountId(ClientProperty.USER_KEY);
+        User user = userFacade.findUserByAccountId(client.get(ClientProperty.USER_KEY));
         Room room = roomFacade.getRoom(request.getRoomId());
+
+        if (memberFacade.checkRoomUserExist(room, user)) {
+            throw AlreadyJoinException.EXCEPTION;
+        }
 
         room.addMember(Member.builder()
                 .room(room)
