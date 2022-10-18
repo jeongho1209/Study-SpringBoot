@@ -1,7 +1,6 @@
 package com.example.socket.domain.chat.domain;
 
 import com.example.socket.domain.user.domain.User;
-import com.example.socket.global.entity.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,7 +11,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class Message extends BaseTimeEntity {
+public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
