@@ -3,13 +3,13 @@ package com.example.socket.domain.chat.exception;
 import com.example.socket.global.error.CustomException;
 import com.example.socket.global.error.ErrorCode;
 
-public class RoomUserNotFoundException extends CustomException {
+public class AlreadyJoinException extends CustomException {
 
     public static final CustomException EXCEPTION =
-            new RoomUserNotFoundException();
+            new AlreadyJoinException();
 
-    private RoomUserNotFoundException() {
-        super(ErrorCode.ROOM_USER_NOT_FOUND);
+    private AlreadyJoinException() {
+        super(ErrorCode.ALREADY_JOIN);
     }
 
 }

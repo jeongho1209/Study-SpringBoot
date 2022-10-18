@@ -13,9 +13,10 @@ public enum ErrorCode {
 
     USER_NOT_FOUND(404, "User Not Found"),
     ROOM_NOT_FOUND(404, "Room Not Found"),
-    ROOM_USER_NOT_FOUND(404, "Room User Not Found"),
+    MEMBER_NOT_FOUND(404, "Member Not Found"),
 
     USER_EXISTS(409, "User Exists"),
+    ALREADY_JOIN(409, "Already Join"),
 
     INTERNAL_SERVER_ERROR(500, "Internal Server Error");
 
