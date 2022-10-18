@@ -25,7 +25,6 @@ public class SendChatService {
 
     @Transactional
     public void execute(SocketIOClient client, SocketIOServer socketIOServer, SendChatRequest request) {
-
         Room room = roomFacade.getRoom(request.getRoomId());
         User user = userFacade.findUserByClient(client);
 
