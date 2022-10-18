@@ -27,8 +27,8 @@ public class WebSocketConfig {
     }
 
     @Bean
-    public SpringAnnotationScanner springAnnotationScanner() {
-        return new SpringAnnotationScanner(socketIOServer());
+    public SpringAnnotationScanner springAnnotationScanner(SocketIOServer socketIOServer) {
+        return new SpringAnnotationScanner(socketIOServer);
     }
 
 }

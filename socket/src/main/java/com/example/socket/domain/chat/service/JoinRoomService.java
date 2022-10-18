@@ -20,7 +20,7 @@ public class JoinRoomService {
 
     private final RoomFacade roomFacade;
     private final UserFacade userFacade;
-    private final SocketIOServer server;
+    private final SocketIOServer socketIOServer;
 
     @Transactional
     public void execute(SocketIOClient client, JoinRoomRequest request) {
@@ -35,7 +35,7 @@ public class JoinRoomService {
         String roomId = room.getId().toString();
         client.joinRoom(roomId);
 
-        server.getRoomOperations(roomId)
+        socketIOServer.getRoomOperations(roomId)
                 .sendEvent(SocketProperty.ROOM);
     }
 
