@@ -1,13 +1,13 @@
 package com.example.socket.domain.chat.presentation.dto;
 
-import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
-@AllArgsConstructor
+@Builder
 public class MessageDto {
 
-    private final String message;
-    private final Integer roomId;
+    private Integer userId;
+    private String message;
 
 }

@@ -22,7 +22,7 @@ public class CreateRoomService {
     private final UserFacade userFacade;
     private final RoomRepository roomRepository;
     private final MemberRepository memberRepository;
-    private final SocketIOServer server;
+    private final SocketIOServer socketIOServer;
 
     @Transactional
     public void execute(SocketIOClient client, CreateRoomRequest request) {
@@ -33,15 +33,15 @@ public class CreateRoomService {
                 .name(request.getRoomName())
                 .build());
 
-        Member member = memberRepository.save(Member.builder()
-                .user(user)
+        memberRepository.save(Member.builder()
                 .room(room)
+                .user(user)
                 .build());
 
         String socketRoomId = room.getId().toString();
         client.joinRoom(socketRoomId);
 
-        server.getRoomOperations(socketRoomId)
+        socketIOServer.getRoomOperations(socketRoomId)
                 .sendEvent(SocketProperty.ROOM);
     }
 
