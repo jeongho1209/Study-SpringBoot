@@ -8,14 +8,14 @@ import com.example.socket.global.websocket.property.ClientProperty;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Component;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 @Slf4j
 @RequiredArgsConstructor
-@RestController
+@Component
 public class WebSocketJwtHandler {
 
     private final JwtTokenProvider jwtTokenProvider;
