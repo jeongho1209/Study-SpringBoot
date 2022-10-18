@@ -75,7 +75,7 @@ public class JwtTokenProvider {
         try {
             return Jwts.parser().setSigningKey(jwtProperty.getSecretKey())
                     .parseClaimsJws(token).getBody();
-        } catch (io.jsonwebtoken.ExpiredJwtException e) {
+        } catch (ExpiredJwtException e) {
             throw ExpiredJwtException.EXCEPTION;
         } catch (Exception e) {
             throw InvalidJwtException.EXCEPTION;
