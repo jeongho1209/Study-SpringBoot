@@ -34,6 +34,11 @@ public class SocketExceptionListener implements ExceptionListener {
     }
 
     @Override
+    public void onPongException(Exception e, SocketIOClient client) {
+        runExceptionHandling(e, client);
+    }
+
+    @Override
     public boolean exceptionCaught(ChannelHandlerContext ctx, Throwable e) {
         return false;
     }
