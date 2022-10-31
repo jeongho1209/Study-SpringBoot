@@ -9,19 +9,19 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
 @Slf4j
 @RequiredArgsConstructor
-@Component
+@RestController
 public class WebSocketJwtHandler {
 
     private final JwtTokenProvider jwtTokenProvider;
 
-    public static final ConcurrentMap<String, SocketIOClient> socketIOClientMap =
-            new ConcurrentHashMap<>();
+    public static final ConcurrentMap<String, SocketIOClient> socketIOClientMap = new ConcurrentHashMap<>();
 
     @OnConnect
     public void onConnect(SocketIOClient client) {
