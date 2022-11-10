@@ -51,6 +51,9 @@ dependencies {
 
     // feign
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:3.1.0'
+
+    // socket
+    implementation 'com.corundumstudio.socketio:netty-socketio:1.7.22'
 }
 
 tasks.named('test') {
