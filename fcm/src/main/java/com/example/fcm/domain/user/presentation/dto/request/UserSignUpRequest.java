@@ -1,4 +1,4 @@
-package com.example.fcm.domain.user.presentation.dto;
+package com.example.fcm.domain.user.presentation.dto.request;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
