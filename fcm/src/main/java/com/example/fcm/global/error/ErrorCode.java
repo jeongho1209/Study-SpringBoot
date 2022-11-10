@@ -13,6 +13,7 @@ public enum ErrorCode {
     FEIGN_UN_AUTHORIZED(401, "Feign Un Authorized"),
     EXPIRED_JWT(401, "Expired Jwt"),
     INVALID_JWT(401, "Invalid Jwt"),
+    PASSWORD_MIS_MATCH(401, "Password Mis Match"),
 
     FEIGN_FORBIDDEN(403, "Feign Forbidden"),
 
