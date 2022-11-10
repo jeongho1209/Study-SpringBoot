@@ -3,7 +3,7 @@ package com.example.fcm.domain.user.service;
 import com.example.fcm.domain.user.domain.User;
 import com.example.fcm.domain.user.domain.UserRepository;
 import com.example.fcm.domain.user.exception.UserExistException;
-import com.example.fcm.domain.user.presentation.dto.UserSignUpRequest;
+import com.example.fcm.domain.user.presentation.dto.request.UserSignUpRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
