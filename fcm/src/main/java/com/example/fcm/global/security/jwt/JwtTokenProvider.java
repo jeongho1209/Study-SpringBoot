@@ -22,19 +22,16 @@ import java.util.Date;
 @Component
 public class JwtTokenProvider {
 
-    private static final String ACCESS_TYPE = "access";
-    private static final String REFRESH_TYPE = "refresh";
-
     private final JwtProperty jwtProperty;
     private final AuthDetailsService authDetailsService;
     private final RefreshTokenRepository refreshTokenRepository;
 
     public String generateAccessToken(String accountId) {
-        return generateToken(accountId, ACCESS_TYPE, jwtProperty.getAccessExp());
+        return generateToken(accountId, "access", jwtProperty.getAccessExp());
     }
 
     public String generateRefreshToken(String accountId) {
-        String refreshToken = generateToken(accountId, REFRESH_TYPE, jwtProperty.getRefreshExp());
+        String refreshToken = generateToken(accountId, "refresh", jwtProperty.getRefreshExp());
         refreshTokenRepository.save(RefreshToken.builder()
                 .accountId(accountId)
                 .token(refreshToken)
@@ -79,9 +76,10 @@ public class JwtTokenProvider {
         try {
             return Jwts.parser().setSigningKey(jwtProperty.getSecretKey())
                     .parseClaimsJws(token).getBody();
-        } catch (ExpiredJwtException e) {
+        } catch (io.jsonwebtoken.ExpiredJwtException e) {
             throw ExpiredJwtException.EXCEPTION;
         } catch (Exception e) {
+            System.out.println("JwtTokenProvider.getTokenBody");
             throw InvalidJwtException.EXCEPTION;
         }
     }
