@@ -18,25 +18,27 @@ public class ExceptionFilter extends OncePerRequestFilter {
     private final ObjectMapper objectMapper;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
-                                    FilterChain filterChain) throws IOException {
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws IOException {
         try {
             filterChain.doFilter(request, response);
         } catch (CustomException e) {
-            logger.error(e);
-            sendErrorMessage(response, e.getErrorCode());
+            setErrorResponse(e.getErrorCode(), response);
         } catch (Exception e) {
-            logger.error(e);
-            sendErrorMessage(response, ErrorCode.INTERNAL_SERVER_ERROR);
+            if (e.getCause() instanceof CustomException) {
+                setErrorResponse(((CustomException) e.getCause()).getErrorCode(), response);
+            } else {
+                e.printStackTrace();
+                setErrorResponse(ErrorCode.INTERNAL_SERVER_ERROR, response);
+            }
         }
     }
 
-    private void sendErrorMessage(HttpServletResponse response, ErrorCode errorCode) throws IOException {
+    private void setErrorResponse(ErrorCode errorCode, HttpServletResponse response) throws IOException {
         ErrorResponse errorResponse = ErrorResponse.builder()
                 .status(errorCode.getStatus())
                 .message(errorCode.getMessage())
                 .build();
-
+        
         String errorResponseJson = objectMapper.writeValueAsString(errorResponse);
 
         response.setStatus(errorCode.getStatus());

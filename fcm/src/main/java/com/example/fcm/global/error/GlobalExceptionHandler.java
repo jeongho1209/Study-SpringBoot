@@ -7,23 +7,15 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.validation.ConstraintViolation;
+import javax.validation.ConstraintViolationException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-
-    @ExceptionHandler(CustomException.class)
-    public ResponseEntity<ErrorResponse> customExceptionHandling(CustomException e) {
-        final ErrorCode errorCode = e.getErrorCode();
-        return new ResponseEntity<>(
-                ErrorResponse.builder()
-                        .status(errorCode.getStatus())
-                        .message(errorCode.getMessage())
-                        .build(),
-                HttpStatus.valueOf(errorCode.getStatus())
-        );
-    }
 
     @ExceptionHandler(BindException.class)
     public ResponseEntity<?> bindExceptionHandling(BindException e) {
@@ -34,6 +26,20 @@ public class GlobalExceptionHandler {
         }
 
         return new ResponseEntity<>(errorList, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler({ConstraintViolationException.class})
+    public ResponseEntity<Map<String, Object>> handleConstraintViolation(ConstraintViolationException e) {
+        Map<String, Object> errorMap = new HashMap<>();
+        List<String> errors = new ArrayList<>();
+        for (ConstraintViolation<?> violation : e.getConstraintViolations()) {
+            errors.add(violation.getRootBeanClass().getName() + " " +
+                    violation.getPropertyPath() + ": " + violation.getMessage());
+        }
+        errorMap.put("errors", errors);
+        errorMap.put("message", e.getMessage());
+
+        return new ResponseEntity<>(errorMap, HttpStatus.BAD_REQUEST);
     }
 
 }
