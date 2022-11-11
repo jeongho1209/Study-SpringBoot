@@ -13,6 +13,7 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
+@Table(name = "tbl_message")
 public class Message extends BaseTimeEntity {
 
     @Id

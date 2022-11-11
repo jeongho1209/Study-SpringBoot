@@ -12,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 @Builder
 @Entity
+@Table(name = "tbl_room")
 public class Room {
 
     @Id
@@ -24,5 +25,9 @@ public class Room {
 
     @OneToMany(mappedBy = "room", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<RoomUser> roomUsers = new ArrayList<>();
+
+    public void addRoomUser(RoomUser roomUser) {
+        this.roomUsers.add(roomUser);
+    }
 
 }
