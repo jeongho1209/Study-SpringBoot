@@ -2,6 +2,7 @@ package com.example.fcm.global.websocket;
 
 import com.corundumstudio.socketio.SocketConfig;
 import com.corundumstudio.socketio.SocketIOServer;
+import com.corundumstudio.socketio.annotation.SpringAnnotationScanner;
 import com.example.fcm.global.websocket.exception.SocketExceptionListener;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -24,4 +25,10 @@ public class WebSocketConfig {
         config.setExceptionListener(new SocketExceptionListener());
         return new SocketIOServer(config);
     }
+
+    @Bean
+    public SpringAnnotationScanner springAnnotationScanner() {
+        return new SpringAnnotationScanner(socketIOServer());
+    }
+
 }
