@@ -20,11 +20,11 @@ public class UserFacade {
 
     public User findUserByAccountId(String accountId) {
         return getAccountId(accountId);
-     }
+    }
 
-     public User getAccountId(String accountId) {
+    public User getAccountId(String accountId) {
         return userRepository.findByAccountId(accountId)
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
-     }
+    }
 
 }
