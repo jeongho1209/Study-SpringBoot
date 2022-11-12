@@ -15,8 +15,8 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private final JwtTokenProvider jwtTokenProvider;
     private final ObjectMapper objectMapper;
+    private final JwtTokenProvider jwtTokenProvider;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -35,7 +35,7 @@ public class SecurityConfig {
                 .anyRequest().permitAll()
 
                 .and()
-                .apply(new FilterConfig(jwtTokenProvider, objectMapper))
+                .apply(new FilterConfig(objectMapper, jwtTokenProvider))
 
                 .and().build();
     }

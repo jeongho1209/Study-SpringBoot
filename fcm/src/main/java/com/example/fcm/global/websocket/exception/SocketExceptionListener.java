@@ -11,7 +11,6 @@ import io.netty.channel.ChannelHandlerContext;
 import java.util.List;
 
 public class SocketExceptionListener implements ExceptionListener {
-
     @Override
     public void onEventException(Exception e, List<Object> args, SocketIOClient client) {
         runExceptionHandling(e, client);
@@ -34,23 +33,18 @@ public class SocketExceptionListener implements ExceptionListener {
     }
 
     @Override
-    public void onPongException(Exception e, SocketIOClient client) {
-        runExceptionHandling(e, client);
-    }
-
-    @Override
     public boolean exceptionCaught(ChannelHandlerContext ctx, Throwable e) {
         return false;
     }
 
     private void runExceptionHandling(Exception e, SocketIOClient client) {
         final ErrorCode errorCode;
+
         if (e.getCause() instanceof CustomException) {
             errorCode = ((CustomException) e.getCause()).getErrorCode();
         } else {
             errorCode = ErrorCode.INTERNAL_SERVER_ERROR;
         }
-
         ErrorResponse message = ErrorResponse.builder()
                 .status(errorCode.getStatus())
                 .message(errorCode.getMessage())

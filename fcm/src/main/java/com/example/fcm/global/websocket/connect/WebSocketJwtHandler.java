@@ -22,16 +22,18 @@ public class WebSocketJwtHandler {
     private final JwtTokenProvider jwtTokenProvider;
 
     @OnConnect
-    public void onConnect(SocketIOClient socketIOClient) {
-        String token = socketIOClient.getHandshakeData().getHttpHeaders().get("Authorization");
+    public void onConnect(SocketIOClient client) {
+        String token = client.getHandshakeData().getHttpHeaders().get("Authorization");
         Authentication authentication = jwtTokenProvider.authentication(token);
-        String accountId = authentication.getName();
-        socketIOClient.set(ClientProperty.USER_KEY, accountId);
+        socketIOClientMap.put(authentication.getName(), client);
+        client.set(ClientProperty.USER_KEY, authentication.getName());
+        log.info("Connected : " + client.getSessionId() + ", " + authentication.getName());
     }
 
     @OnDisconnect
-    public void onDisConnect(SocketIOClient socketIOClient) {
-        socketIOClientMap.remove(socketIOClient.get(ClientProperty.USER_KEY).toString());
+    public void onDisconnect(SocketIOClient client) {
+        socketIOClientMap.remove(client.get(ClientProperty.USER_KEY).toString());
+        log.info("DisConnected : " + client.getSessionId());
     }
 
 }

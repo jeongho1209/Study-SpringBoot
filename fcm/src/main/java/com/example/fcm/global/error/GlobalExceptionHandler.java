@@ -42,4 +42,16 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorMap, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(CustomException.class)
+    public ResponseEntity<ErrorResponse> customExceptionHandling(CustomException e) {
+        final ErrorCode errorCode = e.getErrorCode();
+        return new ResponseEntity<>(
+                ErrorResponse.builder()
+                        .status(errorCode.getStatus())
+                        .message(errorCode.getMessage())
+                        .build(),
+                HttpStatus.valueOf(errorCode.getStatus())
+        );
+    }
+
 }
