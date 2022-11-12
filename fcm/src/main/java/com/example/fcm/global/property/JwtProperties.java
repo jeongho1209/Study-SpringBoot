@@ -9,7 +9,7 @@ import org.springframework.boot.context.properties.ConstructorBinding;
 @AllArgsConstructor
 @ConstructorBinding
 @ConfigurationProperties(value = "jwt")
-public class JwtProperty {
+public class JwtProperties {
 
     private final String secretKey;
     private final Long accessExp;

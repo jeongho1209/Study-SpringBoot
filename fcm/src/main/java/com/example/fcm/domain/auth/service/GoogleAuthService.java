@@ -7,7 +7,7 @@ import com.example.fcm.domain.user.domain.User;
 import com.example.fcm.domain.user.domain.UserRepository;
 import com.example.fcm.domain.user.exception.UserExistException;
 import com.example.fcm.global.property.AuthProperty;
-import com.example.fcm.global.property.JwtProperty;
+import com.example.fcm.global.property.JwtProperties;
 import com.example.fcm.global.security.jwt.JwtTokenProvider;
 import com.example.fcm.infrastructure.feign.client.GoogleAuth;
 import com.example.fcm.infrastructure.feign.client.GoogleInfo;
@@ -27,7 +27,7 @@ public class GoogleAuthService {
     private final GoogleAuth googleAuth;
     private final GoogleInfo googleInfo;
     private final AuthProperty authProperty;
-    private final JwtProperty jwtProperty;
+    private final JwtProperties jwtProperty;
     private final RefreshTokenRepository refreshTokenRepository;
     private final UserRepository userRepository;
     private final JwtTokenProvider jwtTokenProvider;
