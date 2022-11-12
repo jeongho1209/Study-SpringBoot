@@ -10,7 +10,6 @@ import com.example.fcm.domain.chat.presentation.dto.request.CreateRoomRequest;
 import com.example.fcm.domain.chat.presentation.dto.response.RoomNotificationResponse;
 import com.example.fcm.domain.user.domain.User;
 import com.example.fcm.domain.user.facade.UserFacade;
-import com.example.fcm.global.websocket.property.ClientProperty;
 import com.example.fcm.global.websocket.property.SocketProperty;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,7 +26,7 @@ public class CreateRoomService {
 
     @Transactional
     public void execute(SocketIOClient socketIOClient, CreateRoomRequest request) {
-        User user = userFacade.findUserByAccountId(socketIOClient.get(ClientProperty.USER_KEY));
+        User user = userFacade.findUserByClient(socketIOClient);
 
         Room room = roomRepository.save(Room.builder()
                 .roomName(request.getRoomName())
@@ -41,7 +40,7 @@ public class CreateRoomService {
         String socketRoomId = room.getId().toString();
         socketIOClient.joinRoom(socketRoomId);
 
-        RoomNotificationResponse response = new RoomNotificationResponse(socketRoomId,user.getName() +  "입장!");
+        RoomNotificationResponse response = new RoomNotificationResponse(socketRoomId, user.getName() + "입장!");
 
         socketIOServer.getRoomOperations(socketRoomId)
                 .sendEvent(SocketProperty.ROOM, response);

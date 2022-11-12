@@ -18,8 +18,8 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
-@Component
 @RequiredArgsConstructor
+@Component
 public class JwtTokenProvider {
 
     private final JwtProperties jwtProperties;
