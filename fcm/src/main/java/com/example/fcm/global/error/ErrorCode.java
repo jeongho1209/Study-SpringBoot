@@ -14,10 +14,13 @@ public enum ErrorCode {
     EXPIRED_JWT(401, "Expired Jwt"),
     INVALID_JWT(401, "Invalid Jwt"),
     PASSWORD_MIS_MATCH(401, "Password Mis Match"),
+    CANNOT_DELETE_ROOM(401, "Cannot Delete Room"),
 
     FEIGN_FORBIDDEN(403, "Feign Forbidden"),
 
     USER_NOT_FOUND(404, "User Not Found"),
+    ROOM_NOT_FOUND(404, "Room Not Found"),
+    ROOM_USER_NOT_FOUND(404, "Room User Not Found"),
 
     USER_EXIST(409, "User Exist"),
 
