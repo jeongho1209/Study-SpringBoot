@@ -1,9 +1,11 @@
 package com.example.fcm.domain.user.service;
 
+import com.example.fcm.domain.auth.presentation.dto.response.TokenResponse;
 import com.example.fcm.domain.user.domain.User;
 import com.example.fcm.domain.user.domain.UserRepository;
 import com.example.fcm.domain.user.exception.UserExistException;
 import com.example.fcm.domain.user.presentation.dto.request.UserSignUpRequest;
+import com.example.fcm.global.security.jwt.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -15,9 +17,10 @@ public class UserSignUpService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtTokenProvider jwtTokenProvider;
 
     @Transactional
-    public void execute(UserSignUpRequest request) {
+    public TokenResponse execute(UserSignUpRequest request) {
         if (userRepository.findByAccountId(request.getAccountId()).isPresent()) {
             throw UserExistException.EXCEPTION;
         }
@@ -27,6 +30,14 @@ public class UserSignUpService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .name(request.getName())
                 .build());
+
+        String accessToken = jwtTokenProvider.generateAccessToken(request.getAccountId());
+        String refreshToken = jwtTokenProvider.generateRefreshToken(request.getAccountId());
+
+        return TokenResponse.builder()
+                .accessToken(accessToken)
+                .refreshToken(refreshToken)
+                .build();
     }
 
 }
