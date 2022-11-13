@@ -30,4 +30,8 @@ public class Room {
         this.roomUsers.add(roomUser);
     }
 
+    public void removeRoomUser(RoomUser roomUser) {
+        this.roomUsers.remove(roomUser);
+    }
+
 }
