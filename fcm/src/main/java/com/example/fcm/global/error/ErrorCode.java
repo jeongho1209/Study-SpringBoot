@@ -15,6 +15,7 @@ public enum ErrorCode {
     INVALID_JWT(401, "Invalid Jwt"),
     PASSWORD_MIS_MATCH(401, "Password Mis Match"),
     CANNOT_DELETE_ROOM(401, "Cannot Delete Room"),
+    CANNOT_JOIN_ROOM(401, "Cannot Join Room"),
 
     FEIGN_FORBIDDEN(403, "Feign Forbidden"),
 
@@ -23,6 +24,7 @@ public enum ErrorCode {
     ROOM_USER_NOT_FOUND(404, "Room User Not Found"),
 
     USER_EXIST(409, "User Exist"),
+    ROOM_USER_EXIST(409, "Room User Exist"),
 
     FEIGN_EXPIRED_TOKEN(419, "Feign Expired Token"),
 
