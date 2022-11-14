@@ -4,6 +4,7 @@ import com.corundumstudio.socketio.SocketIOClient;
 import com.corundumstudio.socketio.SocketIOServer;
 import com.example.fcm.domain.chat.domain.room.Room;
 import com.example.fcm.domain.chat.domain.roomuser.RoomUser;
+import com.example.fcm.domain.chat.exception.CannotJoinRoomException;
 import com.example.fcm.domain.chat.exception.RoomUserExistException;
 import com.example.fcm.domain.chat.facade.RoomFacade;
 import com.example.fcm.domain.chat.facade.RoomUserFacade;
@@ -33,6 +34,10 @@ public class JoinRoomService {
 
         if (roomUserFacade.existUser(user, room)) {
             throw RoomUserExistException.EXCEPTION;
+        }
+
+        if (!roomFacade.isNotFullRoom(room)) {
+            throw CannotJoinRoomException.EXCEPTION;
         }
 
         room.addRoomUser(RoomUser.builder()
