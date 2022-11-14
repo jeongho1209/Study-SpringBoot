@@ -39,7 +39,6 @@ public class SocketExceptionListener implements ExceptionListener {
 
     private void runExceptionHandling(Exception e, SocketIOClient client) {
         final ErrorCode errorCode;
-
         if (e.getCause() instanceof CustomException) {
             errorCode = ((CustomException) e.getCause()).getErrorCode();
         } else {
