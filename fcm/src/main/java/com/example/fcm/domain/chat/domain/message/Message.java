@@ -2,7 +2,6 @@ package com.example.fcm.domain.chat.domain.message;
 
 import com.example.fcm.domain.chat.domain.room.Room;
 import com.example.fcm.domain.user.domain.User;
-import com.example.fcm.global.entity.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Table(name = "tbl_message")
-public class Message extends BaseTimeEntity {
+public class Message {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,6 +35,14 @@ public class Message extends BaseTimeEntity {
         this.message = message;
         this.user = user;
         this.room = room;
+    }
+
+    public Long getRoomId() {
+        return room.getId();
+    }
+
+    public String getUserName() {
+        return user.getName();
     }
 
 }
