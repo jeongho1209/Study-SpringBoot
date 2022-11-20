@@ -1,9 +1,10 @@
 package com.example.studyspringboot.domain.user.presentation;
 
 import com.example.studyspringboot.domain.user.presentation.dto.request.ChangePasswordRequest;
+import com.example.studyspringboot.domain.user.presentation.dto.request.QueryAnotherUserInfoRequest;
 import com.example.studyspringboot.domain.user.presentation.dto.request.UpdateUserInfoRequest;
 import com.example.studyspringboot.domain.user.presentation.dto.request.UserSignUpRequest;
-import com.example.studyspringboot.domain.user.presentation.dto.response.QueryMyInfoResponse;
+import com.example.studyspringboot.domain.user.presentation.dto.response.QueryUserInfoResponse;
 import com.example.studyspringboot.domain.user.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,7 @@ public class UserController {
 
     private final UserSignUpService userSignUpService;
     private final QueryMyInfoService queryMyInfoService;
+    private final QueryAnotherUserInfoService queryAnotherUserInfoService;
     private final UpdateUserInfoService updateUserInfoService;
     private final ChangePasswordService changePasswordService;
     private final UserWithdrawalService userWithdrawalService;
@@ -47,8 +49,13 @@ public class UserController {
     }
 
     @GetMapping
-    public QueryMyInfoResponse getMyInfo() {
+    public QueryUserInfoResponse getMyInfo() {
         return queryMyInfoService.getMyInfo();
+    }
+
+    @GetMapping("/info")
+    public QueryUserInfoResponse getAnotherInfo(QueryAnotherUserInfoRequest request) {
+        return queryAnotherUserInfoService.execute(request);
     }
 
 }
