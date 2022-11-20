@@ -16,6 +16,6 @@ public abstract class BaseTimeEntity {
 
     @Column(nullable = false)
     @CreatedDate
-    private LocalDateTime createdAt;
+    private LocalDateTime sendAt;
 
 }
