@@ -1,8 +1,7 @@
 package com.example.studyspringboot.domain.feed.service;
 
 import com.example.studyspringboot.domain.feed.domain.Feed;
-import com.example.studyspringboot.domain.feed.domain.repository.FeedRepository;
-import com.example.studyspringboot.domain.feed.exception.FeedNotFoundException;
+import com.example.studyspringboot.domain.feed.facade.FeedFacade;
 import com.example.studyspringboot.domain.feed.presentation.dto.response.FeedDetailResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,13 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class QueryFeedDetailService {
 
-    private final FeedRepository feedRepository;
+    private final FeedFacade feedFacade;
 
     @Transactional
     public FeedDetailResponse getFeedDetail(Integer feedId) {
-
-        Feed feed = feedRepository.findById(feedId)
-                .orElseThrow(() -> FeedNotFoundException.EXCEPTION);
+        Feed feed = feedFacade.getFeed(feedId);
 
         feed.addViews();
 

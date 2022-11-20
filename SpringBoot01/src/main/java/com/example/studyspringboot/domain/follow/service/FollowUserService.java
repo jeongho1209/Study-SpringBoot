@@ -9,7 +9,6 @@ import com.example.studyspringboot.domain.follow.presentation.dto.FollowRequest;
 import com.example.studyspringboot.domain.follow.presentation.dto.response.FollowResponse;
 import com.example.studyspringboot.domain.user.domain.User;
 import com.example.studyspringboot.domain.user.domain.repository.UserRepository;
-import com.example.studyspringboot.domain.user.exception.UserNotFoundException;
 import com.example.studyspringboot.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -28,8 +27,7 @@ public class FollowUserService {
     public FollowResponse execute(FollowRequest request) {
         User currentUser = userFacade.getCurrentUser();
 
-        User targetUser = userRepository.findById(request.getTargetUserId())
-                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
+        User targetUser = userFacade.getUserById(request.getTargetUserId());
 
         if (currentUser.getId().equals(targetUser.getId())) {
             throw CannotFollowYourselfException.EXCEPTION;
