@@ -25,7 +25,7 @@ public class UserSignUpService {
             throw UserExistException.EXCEPTION;
         }
 
-        User user = User.builder()
+        userRepository.save(User.builder()
                 .accountId(request.getAccountId())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .email(request.getEmail())
@@ -33,8 +33,7 @@ public class UserSignUpService {
                 .sex(request.getSex())
                 .followCounts(0)
                 .role(Role.USER)
-                .build();
-        userRepository.save(user);
+                .build());
     }
 
 }
