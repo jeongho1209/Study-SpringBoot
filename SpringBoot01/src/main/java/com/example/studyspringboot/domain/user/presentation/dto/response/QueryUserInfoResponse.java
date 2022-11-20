@@ -6,7 +6,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class QueryMyInfoResponse {
+public class QueryUserInfoResponse {
 
     private final Sex sex;
     private final String introduce;

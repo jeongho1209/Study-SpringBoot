@@ -1,10 +1,9 @@
 package com.example.studyspringboot.domain.user.service;
 
 import com.example.studyspringboot.domain.user.domain.User;
-import com.example.studyspringboot.domain.user.domain.repository.UserRepository;
-import com.example.studyspringboot.domain.user.exception.UserNotFoundException;
+import com.example.studyspringboot.domain.user.facade.UserFacade;
 import com.example.studyspringboot.domain.user.presentation.dto.request.QueryAnotherUserInfoRequest;
-import com.example.studyspringboot.domain.user.presentation.dto.response.QueryMyInfoResponse;
+import com.example.studyspringboot.domain.user.presentation.dto.response.QueryUserInfoResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,15 +12,13 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class QueryAnotherUserInfoService {
 
-    private final UserRepository userRepository;
+    private final UserFacade userFacade;
 
     @Transactional(readOnly = true)
-    public QueryMyInfoResponse userInfo(QueryAnotherUserInfoRequest request) {
+    public QueryUserInfoResponse execute(QueryAnotherUserInfoRequest request) {
+        User user = userFacade.getUserById(request.getUserId());
 
-        User user = userRepository.findById(request.getUserId())
-                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
-
-        return QueryMyInfoResponse.builder()
+        return QueryUserInfoResponse.builder()
                 .introduce(user.getIntroduce())
                 .sex(user.getSex())
                 .name(user.getName())
