@@ -1,3 +1,9 @@
+buildscript {
+    ext {
+        queryDslVersion = '5.0.0'
+    }
+}
+
 plugins {
     id 'java'
     id 'org.springframework.boot' version '2.7.5'
@@ -28,6 +34,9 @@ dependencies {
     // validation
     implementation 'org.springframework.boot:spring-boot-starter-validation'
 
+    // configuration
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
     // web
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
@@ -40,11 +49,19 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test'
 
     // querydsl
-    implementation 'com.querydsl:querydsl-jpa'
+    implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
     annotationProcessor(
             "javax.persistence:javax.persistence-api",
             "javax.annotation:javax.annotation-api",
-            "com.querydsl:querydsl-apt")
+            "com.querydsl:querydsl-apt:${queryDslVersion}:jpa")
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ["$projectDir/src/main/java", "$projectDir/build/generated"]
+        }
+    }
 }
 
 tasks.named('test') {
