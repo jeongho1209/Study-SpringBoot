@@ -4,7 +4,9 @@ import com.example.studyspringboot.domain.user.presentation.dto.request.ChangePa
 import com.example.studyspringboot.domain.user.presentation.dto.request.QueryAnotherUserInfoRequest;
 import com.example.studyspringboot.domain.user.presentation.dto.request.UpdateUserInfoRequest;
 import com.example.studyspringboot.domain.user.presentation.dto.request.UserSignUpRequest;
+import com.example.studyspringboot.domain.user.presentation.dto.response.QueryUserElement;
 import com.example.studyspringboot.domain.user.presentation.dto.response.QueryUserInfoResponse;
+import com.example.studyspringboot.domain.user.presentation.dto.response.QueryUserListResponse;
 import com.example.studyspringboot.domain.user.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -23,6 +25,7 @@ public class UserController {
     private final UpdateUserInfoService updateUserInfoService;
     private final ChangePasswordService changePasswordService;
     private final UserWithdrawalService userWithdrawalService;
+    private final QueryUserListService queryUserListService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
@@ -56,6 +59,11 @@ public class UserController {
     @GetMapping("/info")
     public QueryUserInfoResponse getAnotherInfo(QueryAnotherUserInfoRequest request) {
         return queryAnotherUserInfoService.execute(request);
+    }
+
+    @GetMapping("/all")
+    public QueryUserListResponse getUserList() {
+        return queryUserListService.execute();
     }
 
 }
