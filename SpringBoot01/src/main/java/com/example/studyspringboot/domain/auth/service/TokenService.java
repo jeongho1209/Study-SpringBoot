@@ -21,7 +21,6 @@ public class TokenService {
     private final PasswordEncoder passwordEncoder;
     private final JwtTokenProvider jwtTokenProvider;
 
-    @Transactional
     public TokenResponse signIn(UserSignInRequest request, Role role) {
         User user = userRepository.findByAccountId(request.getAccountId())
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
