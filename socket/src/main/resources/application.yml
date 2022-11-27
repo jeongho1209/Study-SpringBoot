@@ -9,7 +9,7 @@ spring:
     database: mysql
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     show-sql: true
 
   jackson:
@@ -27,4 +27,4 @@ jwt:
   prefix: ${PREFIX}
 
 socket:
-  port: 8081
+  port: 8082
