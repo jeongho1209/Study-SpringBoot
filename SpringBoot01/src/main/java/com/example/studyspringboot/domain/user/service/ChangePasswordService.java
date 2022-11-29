@@ -2,7 +2,6 @@ package com.example.studyspringboot.domain.user.service;
 
 import com.example.studyspringboot.domain.auth.exception.PasswordMisMatchException;
 import com.example.studyspringboot.domain.user.domain.User;
-import com.example.studyspringboot.domain.user.domain.repository.UserRepository;
 import com.example.studyspringboot.domain.user.facade.UserFacade;
 import com.example.studyspringboot.domain.user.presentation.dto.request.ChangePasswordRequest;
 import lombok.RequiredArgsConstructor;
@@ -27,5 +26,5 @@ public class ChangePasswordService {
 
         user.changePassword(passwordEncoder.encode(request.getNewPassword()));
     }
-    
+
 }

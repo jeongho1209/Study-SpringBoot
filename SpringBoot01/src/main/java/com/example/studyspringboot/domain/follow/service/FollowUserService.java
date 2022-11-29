@@ -8,7 +8,6 @@ import com.example.studyspringboot.domain.follow.facade.FollowFacade;
 import com.example.studyspringboot.domain.follow.presentation.dto.FollowRequest;
 import com.example.studyspringboot.domain.follow.presentation.dto.response.FollowResponse;
 import com.example.studyspringboot.domain.user.domain.User;
-import com.example.studyspringboot.domain.user.domain.repository.UserRepository;
 import com.example.studyspringboot.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,7 +19,6 @@ public class FollowUserService {
 
     private final FollowFacade followFacade;
     private final UserFacade userFacade;
-    private final UserRepository userRepository;
     private final FollowRepository followRepository;
 
     @Transactional

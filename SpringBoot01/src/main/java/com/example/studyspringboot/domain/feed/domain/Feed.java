@@ -1,14 +1,16 @@
 package com.example.studyspringboot.domain.feed.domain;
 
 import com.example.studyspringboot.domain.user.domain.User;
-import com.example.studyspringboot.global.entity.BaseTimeEntity;
 import com.example.studyspringboot.global.entity.BaseTimeIdEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
