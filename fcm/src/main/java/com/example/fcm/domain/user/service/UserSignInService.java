@@ -22,15 +22,15 @@ public class UserSignInService {
 
     @Transactional
     public TokenResponse execute(UserSignInRequest request) {
-        User user = userRepository.findByAccountId(request.getAccountId())
+        User user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
         if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
             throw PasswordMisMatchException.EXCEPTION;
         }
 
-        String accessToken = jwtTokenProvider.generateAccessToken(request.getAccountId());
-        String refreshToken = jwtTokenProvider.generateRefreshToken(request.getAccountId());
+        String accessToken = jwtTokenProvider.generateAccessToken(request.getEmail());
+        String refreshToken = jwtTokenProvider.generateRefreshToken(request.getEmail());
 
         return TokenResponse.builder()
                 .accessToken(accessToken)

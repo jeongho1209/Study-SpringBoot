@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class GoogleInfoResponse {
 
-    private String accountId;
+    private String email;
     private String name;
 
 }

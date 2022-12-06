@@ -45,18 +45,18 @@ public class GoogleAuthService {
 
         GoogleInfoResponse response = googleInfo.googleInfo(accessToken);
 
-        String accountId = response.getAccountId();
+        String email = response.getEmail();
         String name = response.getName();
 
-        String refreshToken = jwtTokenProvider.generateRefreshToken(accountId);
+        String refreshToken = jwtTokenProvider.generateRefreshToken(email);
 
         refreshTokenRepository.save(RefreshToken.builder()
-                .accountId(accountId)
+                .email(email)
                 .token(refreshToken)
                 .ttl(jwtProperty.getRefreshExp())
                 .build());
 
-        createUser(accountId, name);
+        createUser(email, name);
 
         return TokenResponse.builder()
                 .accessToken(accessToken)
@@ -64,12 +64,14 @@ public class GoogleAuthService {
                 .build();
     }
 
-    private void createUser(String accountId, String name) {
-        if (userRepository.findByAccountId(accountId).isPresent()) {
+    private void createUser(String email, String name) {
+        if (userRepository.findByEmail(email).isPresent()) {
             throw UserExistException.EXCEPTION;
         }
+        System.out.println("유저 객체 생성");
         userRepository.save(User.builder()
-                .accountId(accountId)
+                .email(email)
+                .password(null)
                 .name(name)
                 .build());
     }

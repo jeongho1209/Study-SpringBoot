@@ -27,7 +27,7 @@ public class LeaveRoomService {
 
     @Transactional
     public void execute(SocketIOClient socketIOClient, LeaveRoomRequest request) {
-        User user = userFacade.findUserByAccountId(socketIOClient.get(ClientProperty.USER_KEY));
+        User user = userFacade.findUserByEmail(socketIOClient.get(ClientProperty.USER_KEY));
         Room room = roomFacade.getRoom(request.getRoomId());
         RoomUser roomUser = roomUserFacade.getRoomUser(user, room);
 

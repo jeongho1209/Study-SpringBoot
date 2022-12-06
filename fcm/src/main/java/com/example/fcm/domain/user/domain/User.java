@@ -20,20 +20,16 @@ public class User {
     private Long id;
 
     @NotNull
-    @Length(max = 20)
-    private String accountId;
+    private String email;
 
-    @NotNull
-    @Length(max = 60)
     private String password;
 
     @NotNull
-    @Length(max = 10)
     private String name;
 
     @Builder
-    public User(String accountId, String password, String name) {
-        this.accountId = accountId;
+    public User(String email, String password, String name) {
+        this.email = email;
         this.password = password;
         this.name = name;
     }

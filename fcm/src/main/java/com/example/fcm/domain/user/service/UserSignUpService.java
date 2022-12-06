@@ -21,18 +21,18 @@ public class UserSignUpService {
 
     @Transactional
     public TokenResponse execute(UserSignUpRequest request) {
-        if (userRepository.findByAccountId(request.getAccountId()).isPresent()) {
+        if (userRepository.findByEmail(request.getEmail()).isPresent()) {
             throw UserExistException.EXCEPTION;
         }
 
         userRepository.save(User.builder()
-                .accountId(request.getAccountId())
+                .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .name(request.getName())
                 .build());
 
-        String accessToken = jwtTokenProvider.generateAccessToken(request.getAccountId());
-        String refreshToken = jwtTokenProvider.generateRefreshToken(request.getAccountId());
+        String accessToken = jwtTokenProvider.generateAccessToken(request.getEmail());
+        String refreshToken = jwtTokenProvider.generateRefreshToken(request.getEmail());
 
         return TokenResponse.builder()
                 .accessToken(accessToken)
