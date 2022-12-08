@@ -17,7 +17,7 @@ public class GoogleAuthController {
     private final GoogleAuthService googleAuthService;
     private final QueryGoogleAuthLinkService queryGoogleAuthLinkService;
 
-    @GetMapping("/receive-code")
+    @GetMapping("/google")
     public TokenResponse googleAuthLogIn(@RequestParam("code") String code) {
         return googleAuthService.execute(code);
     }
