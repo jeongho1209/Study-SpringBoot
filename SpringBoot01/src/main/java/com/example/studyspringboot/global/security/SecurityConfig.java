@@ -35,6 +35,9 @@ public class SecurityConfig {
                 .and()
                 .authorizeRequests()
 
+                .antMatchers("/swagger-ui/**").permitAll()
+                .antMatchers("/v3/api-docs/**").permitAll()
+
                 // user
                 .antMatchers(HttpMethod.POST, "/user/signup").permitAll()
 
