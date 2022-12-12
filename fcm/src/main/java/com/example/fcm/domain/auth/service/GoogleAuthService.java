@@ -4,7 +4,7 @@ import com.example.fcm.domain.auth.domain.RefreshToken;
 import com.example.fcm.domain.auth.domain.RefreshTokenRepository;
 import com.example.fcm.domain.auth.presentation.dto.response.TokenResponse;
 import com.example.fcm.domain.user.domain.User;
-import com.example.fcm.domain.user.domain.UserRepository;
+import com.example.fcm.domain.user.domain.repository.UserRepository;
 import com.example.fcm.domain.user.exception.UserExistException;
 import com.example.fcm.global.property.AuthProperty;
 import com.example.fcm.global.property.JwtProperties;
@@ -71,7 +71,6 @@ public class GoogleAuthService {
         System.out.println("유저 객체 생성");
         userRepository.save(User.builder()
                 .email(email)
-                .password(null)
                 .name(name)
                 .build());
     }
