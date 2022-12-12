@@ -1,3 +1,9 @@
+buildscript {
+    ext {
+        queryDslVersion = '5.0.0'
+    }
+}
+
 plugins {
     id 'org.springframework.boot' version '2.6.3'
     id 'io.spring.dependency-management' version '1.0.14.RELEASE'
@@ -54,10 +60,25 @@ dependencies {
 
     // socket
     implementation 'com.corundumstudio.socketio:netty-socketio:1.7.19'
+
+    // querydsl
+    implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
+    annotationProcessor(
+            "javax.persistence:javax.persistence-api",
+            "javax.annotation:javax.annotation-api",
+            "com.querydsl:querydsl-apt:${queryDslVersion}:jpa")
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ["$projectDir/src/main/java", "$projectDir/build/generated"]
+        }
+    }
 }
 
 jar {
