@@ -27,7 +27,7 @@ public class CreateRoomService {
 
     @Transactional
     public void execute(SocketIOClient socketIOClient, CreateRoomRequest request) {
-        User user = userFacade.findUserByAccountId(socketIOClient.get(ClientProperty.USER_KEY));
+        User user = userFacade.findUserByEmail(socketIOClient.get(ClientProperty.USER_KEY));
 
         Room room = roomRepository.save(Room.builder()
                 .roomName(request.getRoomName())
