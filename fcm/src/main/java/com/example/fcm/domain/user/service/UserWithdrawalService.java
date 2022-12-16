@@ -1,7 +1,7 @@
 package com.example.fcm.domain.user.service;
 
 import com.example.fcm.domain.user.domain.User;
-import com.example.fcm.domain.user.domain.UserRepository;
+import com.example.fcm.domain.user.domain.repository.UserRepository;
 import com.example.fcm.domain.user.facade.UserFacade;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
