@@ -29,7 +29,7 @@ public class JoinRoomService {
 
     @Transactional
     public void execute(SocketIOClient socketIOClient, JoinRoomRequest request) {
-        User user = userFacade.findUserByAccountId(socketIOClient.get(ClientProperty.USER_KEY));
+        User user = userFacade.findUserByEmail(socketIOClient.get(ClientProperty.USER_KEY));
         Room room = roomFacade.getRoom(request.getRoomId());
 
         if (roomUserFacade.existUser(user, room)) {
