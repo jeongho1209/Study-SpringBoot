@@ -1,7 +1,7 @@
 package com.example.fcm.domain.user.facade;
 
 import com.example.fcm.domain.user.domain.User;
-import com.example.fcm.domain.user.domain.UserRepository;
+import com.example.fcm.domain.user.domain.repository.UserRepository;
 import com.example.fcm.global.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
