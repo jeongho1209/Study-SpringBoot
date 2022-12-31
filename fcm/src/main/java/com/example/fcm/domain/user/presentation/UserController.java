@@ -3,6 +3,8 @@ package com.example.fcm.domain.user.presentation;
 import com.example.fcm.domain.auth.presentation.dto.response.TokenResponse;
 import com.example.fcm.domain.user.presentation.dto.request.UserSignInRequest;
 import com.example.fcm.domain.user.presentation.dto.request.UserSignUpRequest;
+import com.example.fcm.domain.user.presentation.dto.response.QueryUserListResponse;
+import com.example.fcm.domain.user.service.QueryUserListService;
 import com.example.fcm.domain.user.service.UserSignInService;
 import com.example.fcm.domain.user.service.UserSignUpService;
 import com.example.fcm.domain.user.service.UserWithdrawalService;
@@ -20,6 +22,7 @@ public class UserController {
     private final UserSignUpService userSignUpService;
     private final UserSignInService userSignInService;
     private final UserWithdrawalService userWithdrawalService;
+    private final QueryUserListService queryUserListService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
@@ -36,6 +39,11 @@ public class UserController {
     @DeleteMapping
     public void deleteUser() {
         userWithdrawalService.execute();
+    }
+
+    @GetMapping
+    public QueryUserListResponse queryUserList() {
+        return queryUserListService.execute();
     }
 
 }
