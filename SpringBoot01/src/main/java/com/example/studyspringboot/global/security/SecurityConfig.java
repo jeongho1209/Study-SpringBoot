@@ -39,7 +39,7 @@ public class SecurityConfig {
                 .antMatchers("/v3/api-docs/**").permitAll()
 
                 // user
-                .antMatchers(HttpMethod.POST, "/user/signup").permitAll()
+                .antMatchers(HttpMethod.POST, "/api/user/signup").permitAll()
 
                 // auth
                 .antMatchers("/auth/token").permitAll()
