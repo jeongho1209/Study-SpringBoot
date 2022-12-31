@@ -2,7 +2,7 @@ package com.example.fcm.domain.user.service;
 
 import com.example.fcm.domain.auth.presentation.dto.response.TokenResponse;
 import com.example.fcm.domain.user.domain.User;
-import com.example.fcm.domain.user.domain.UserRepository;
+import com.example.fcm.domain.user.domain.repository.UserRepository;
 import com.example.fcm.domain.user.exception.PasswordMisMatchException;
 import com.example.fcm.domain.user.presentation.dto.request.UserSignInRequest;
 import com.example.fcm.global.exception.UserNotFoundException;
