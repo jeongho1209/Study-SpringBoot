@@ -8,6 +8,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -17,10 +18,10 @@ public abstract class BaseTimeEntity {
 
     @NotNull
     @CreatedDate
-    private LocalDateTime createdAt;
+    private LocalDate createdAt;
 
     @NotNull
     @LastModifiedDate
-    private LocalDateTime updatedAt;
+    private LocalDate updatedAt;
 
 }
