@@ -1,5 +1,6 @@
 package com.example.studyspringboot.domain.feed.service;
 
+import com.example.studyspringboot.domain.comment.domain.repository.CommentRepository;
 import com.example.studyspringboot.domain.feed.domain.Feed;
 import com.example.studyspringboot.domain.feed.facade.FeedFacade;
 import com.example.studyspringboot.domain.feed.presentation.dto.response.FeedDetailResponse;
