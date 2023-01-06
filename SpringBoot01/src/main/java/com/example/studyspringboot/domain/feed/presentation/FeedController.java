@@ -6,10 +6,12 @@ import com.example.studyspringboot.domain.feed.presentation.dto.response.FeedDet
 import com.example.studyspringboot.domain.feed.presentation.dto.response.FeedListResponse;
 import com.example.studyspringboot.domain.feed.service.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 
 @RequiredArgsConstructor
 @RequestMapping("/feed")
@@ -20,8 +22,10 @@ public class FeedController {
     private final QueryFeedService queryFeedService;
     private final SearchFeedService searchFeedService;
     private final QueryFeedDetailService queryFeedDetailService;
+    private final QueryFeedNotLikeService queryFeedNotLikeService;
     private final UpdateFeedService updateFeedService;
     private final DeleteFeedService deleteFeedService;
+    private final QueryFeedTestService queryFeedTestService;
 
     @GetMapping("/list")
     public FeedListResponse getFeedList() {
@@ -55,6 +59,18 @@ public class FeedController {
     @DeleteMapping("/{feed-id}")
     public void deleteFeed(@PathVariable("feed-id") Integer feedId) {
         deleteFeedService.execute(feedId);
+    }
+
+    @GetMapping("/all")
+    public FeedListResponse queryList() {
+        return queryFeedNotLikeService.execute();
+    }
+
+    @GetMapping("/test")
+    public FeedListResponse test(@RequestParam(value = "created_at", required = false)
+                                 @DateTimeFormat(pattern = "yyyy-MM-dd")
+                                 LocalDate createdAt) {
+        return queryFeedTestService.execute(createdAt);
     }
 
 }
