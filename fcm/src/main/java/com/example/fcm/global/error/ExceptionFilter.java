@@ -23,8 +23,12 @@ public class ExceptionFilter extends OncePerRequestFilter {
         try {
             filterChain.doFilter(request, response);
         } catch (CustomException e) {
+            logger.error(e);
             sendErrorMessage(response, e.getErrorCode());
         } catch (Exception e) {
+            String a = e.getCause().getMessage();
+            System.out.println(a);
+            logger.error(e);
             sendErrorMessage(response, ErrorCode.INTERNAL_SERVER_ERROR);
         }
     }
