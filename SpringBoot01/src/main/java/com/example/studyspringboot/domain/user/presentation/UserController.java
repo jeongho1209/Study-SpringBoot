@@ -4,10 +4,10 @@ import com.example.studyspringboot.domain.user.presentation.dto.request.ChangePa
 import com.example.studyspringboot.domain.user.presentation.dto.request.QueryAnotherUserInfoRequest;
 import com.example.studyspringboot.domain.user.presentation.dto.request.UpdateUserInfoRequest;
 import com.example.studyspringboot.domain.user.presentation.dto.request.UserSignUpRequest;
-import com.example.studyspringboot.domain.user.presentation.dto.response.QueryUserElement;
 import com.example.studyspringboot.domain.user.presentation.dto.response.QueryUserInfoResponse;
 import com.example.studyspringboot.domain.user.presentation.dto.response.QueryUserListResponse;
 import com.example.studyspringboot.domain.user.service.*;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +27,7 @@ public class UserController {
     private final UserWithdrawalService userWithdrawalService;
     private final QueryUserListService queryUserListService;
 
+    @Operation(summary = "회원가입")
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/signup")
     public void signUp(@RequestBody @Valid UserSignUpRequest request) {
@@ -62,8 +63,8 @@ public class UserController {
     }
 
     @GetMapping("/all")
-    public QueryUserListResponse getUserList() {
-        return queryUserListService.execute();
+    public QueryUserListResponse getUserList(@RequestParam Integer key) {
+        return queryUserListService.execute(key);
     }
 
 }
