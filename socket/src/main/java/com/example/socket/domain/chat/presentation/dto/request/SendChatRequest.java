@@ -3,11 +3,12 @@ package com.example.socket.domain.chat.presentation.dto.request;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Getter
 @NoArgsConstructor
+@Getter
 public class SendChatRequest {
 
-    private Integer roomId;
+    private Integer room;
+
     private String message;
 
 }
