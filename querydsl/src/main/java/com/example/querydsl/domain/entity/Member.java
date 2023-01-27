@@ -15,10 +15,10 @@ public class Member {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Integer id;
 
-    private String username;
     private Integer age;
+    private String username;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id", nullable = false)
