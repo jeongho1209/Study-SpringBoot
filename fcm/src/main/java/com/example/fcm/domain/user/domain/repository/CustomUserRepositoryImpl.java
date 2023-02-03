@@ -11,9 +11,6 @@ import static com.example.fcm.domain.user.domain.QUser.user;
 @RequiredArgsConstructor
 public class CustomUserRepositoryImpl implements CustomUserRepository {
 
-    private static final Long OFF_SET = 1L;
-    private static final Long LIMIT = 3L;
-
     private final JPAQueryFactory queryFactory;
 
     @Override
@@ -21,8 +18,6 @@ public class CustomUserRepositoryImpl implements CustomUserRepository {
         return queryFactory
                 .selectFrom(user)
                 .orderBy(user.id.desc())
-                .offset(OFF_SET)
-                .limit(LIMIT)
                 .fetch();
     }
 }
