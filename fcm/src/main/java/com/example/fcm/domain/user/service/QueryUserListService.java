@@ -24,5 +24,4 @@ public class QueryUserListService {
                         .collect(Collectors.toList())
         );
     }
-
 }
