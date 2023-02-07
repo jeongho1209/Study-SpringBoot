@@ -21,18 +21,19 @@ public class UserSignUpService {
 
     @Transactional
     public TokenResponse execute(UserSignUpRequest request) {
-        if (userRepository.findByEmail(request.getEmail()).isPresent()) {
+        String userEmail = request.getEmail();
+        if (isExistsByEmail(userEmail)) {
             throw UserExistException.EXCEPTION;
         }
 
         userRepository.save(User.builder()
-                .email(request.getEmail())
+                .email(userEmail)
                 .password(passwordEncoder.encode(request.getPassword()))
                 .name(request.getName())
                 .build());
 
-        String accessToken = jwtTokenProvider.generateAccessToken(request.getEmail());
-        String refreshToken = jwtTokenProvider.generateRefreshToken(request.getEmail());
+        String accessToken = jwtTokenProvider.generateAccessToken(userEmail);
+        String refreshToken = jwtTokenProvider.generateRefreshToken(userEmail);
 
         return TokenResponse.builder()
                 .accessToken(accessToken)
@@ -40,4 +41,7 @@ public class UserSignUpService {
                 .build();
     }
 
+    private boolean isExistsByEmail(String email) {
+        return userRepository.existsByEmail(email);
+    }
 }
