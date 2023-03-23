@@ -9,11 +9,15 @@ import com.example.socket.domain.chat.facade.RoomFacade;
 import com.example.socket.domain.chat.presentation.dto.MessageDto;
 import com.example.socket.domain.chat.presentation.dto.request.SendChatRequest;
 import com.example.socket.domain.user.domain.User;
+import com.example.socket.domain.user.exception.UserNotFoundException;
 import com.example.socket.domain.user.facade.UserFacade;
+import com.example.socket.global.websocket.connect.WebSocketJwtHandler;
 import com.example.socket.global.websocket.property.SocketProperty;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
