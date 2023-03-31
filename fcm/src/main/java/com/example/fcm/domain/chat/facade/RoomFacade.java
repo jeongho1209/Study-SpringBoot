@@ -18,16 +18,7 @@ public class RoomFacade {
                 .orElseThrow(() -> RoomNotFoundException.EXCEPTION);
     }
 
-    public void checkRoom(Room room) {
-        if (room.getRoomUsers().size() != 0) {
-            throw CannotDeleteRoomException.EXCEPTION;
-        }
-
-        roomRepository.delete(room);
-    }
-
     public boolean isNotFullRoom(Room room) {
         return 3 > room.getRoomUsers().size();
     }
-
 }
