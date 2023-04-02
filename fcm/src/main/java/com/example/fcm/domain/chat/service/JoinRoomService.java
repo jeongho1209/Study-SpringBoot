@@ -53,5 +53,4 @@ public class JoinRoomService {
         socketIOServer.getRoomOperations(roomId)
                 .sendEvent(SocketProperty.JOIN, response);
     }
-
 }
